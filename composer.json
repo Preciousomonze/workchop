@@ -1,0 +1,15 @@
+{
+"require": {
+    "monolog/monolog": "1.2.*",
+        "phroute/phroute": "^2.1"
+		
+}
+,
+ "autoload": {
+    "classmap": [
+	  "vendor/phpmailer/phpmailer",
+      "vendor/pp"
+	  
+	  ]
+  }
+}
