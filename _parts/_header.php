@@ -2,55 +2,9 @@
 require "_parts/_vars.php";
 require "vendor/autoload.php";
  $session = new Session();
- if($session->check_session_basically($user)){
+ if(!$session->check_session_basically($user)){
 	 header("location:index.php");
  }
- $success_txt = array();
- if(isset($_POST["submit"])){
-	 //oya oh, make sure some things aren't empty first
-	 $email = trim($_POST["email"]);
-	 $password = trim($_POST["password"]);
-	 //store error things
-	 $messages = array();
-	 if(empty($email)){
-		 $success_txt[] = 0;
-		 $messages[] = "Please put in your email address";
-	 }
-	 
-	 if(empty($password)){
-		 $success_txt[] = 0;
-		 $messages[] = "Please put in your password";
-	 }
-	 
-	 else if( !( empty($email) || empty($password) )){
-				//call the curl request
-				$url = $site_url."mobile_app/user_login.php?email=".$email."&password=".$password."";
-			$curl = new Curl();
-			
-			$result = $curl->get_auth($url);
-			
-			if($curl->get_error()){//if it returns true
-			$success_txt[] = 0;
-				$messages[] = "Sorry, an error occurred, try again later";
-			}
-			else if(!$result){//returned false
-			$success_txt[] = 0;
-				$messages[] = "Incorrect email or password.";
-			}
-			
-			else{//successful
-				$success_txt[] = 1;
-				//split the user result
-				$user_result = explode($delimiter,$result);
-				//create the session
-				$_SESSION["user"] = $user_result[4];
-				header("location:index.php");
-				
-			}
-			
-	 }
- }
- 
  ?>
  
 <!DOCTYPE html>
@@ -74,7 +28,7 @@ require "vendor/autoload.php";
 
   <div class="login">
   <div class="logo" style="text-align:center;">
-<a href="index.html"><img src="http://www.workchopapp.com/images/icon.png" alt="workchop"></a>
+<img src="http://www.workchopapp.com/images/icon.png" width="40%" >
 </div>
 	<h1>Login</h1>
 	<div class="adjust-alert-msg">
@@ -98,9 +52,9 @@ require "vendor/autoload.php";
 	<form method="post" action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>">
     	<input type="text" name="email" placeholder="Email or Phone number" required="required" value = "<?php echo (isset($_POST["email"]) ? $_POST["email"] : ""); ?>" />
         <input type="password" name="password" placeholder="Password" required="required"/>
-        <button type="submit" name="submit" class="btn btn-primary btn-block btn-large"><i class="icon fa-login"></i> Sign In</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large"><i class="icon fa-login"></i> Sign In</button>
     </form>
-	<a href="recover.php" class="under-link">Forgot password?</a>
+	<a href=""></a>
 </div>
   
     <script src="assets/js/index.js"></script>

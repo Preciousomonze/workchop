@@ -6,20 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8
 {
-    public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'Phroute\\Phroute\\' => 16,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'Phroute\\Phroute\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phroute/phroute/src/Phroute',
-        ),
-    );
-
     public static $prefixesPsr0 = array (
         'M' => 
         array (
@@ -31,6 +17,7 @@ class ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8
     );
 
     public static $classMap = array (
+        'Curl' => __DIR__ . '/..' . '/pp/curl/Curl.class.php',
         'Dater' => __DIR__ . '/..' . '/pp/date/Date.class.php',
         'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
         'League\\OAuth2\\Client\\Provider\\Google' => __DIR__ . '/..' . '/phpmailer/phpmailer/get_oauth_token.php',
@@ -76,23 +63,11 @@ class ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8
         'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
         'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
         'PekkyRecaptcha' => __DIR__ . '/..' . '/pp/recaptcha/Recaptcha.class.php',
-        'Phroute\\Phroute\\Dispatcher' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Dispatcher.php',
-        'Phroute\\Phroute\\Exception\\BadRouteException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/BadRouteException.php',
-        'Phroute\\Phroute\\Exception\\HttpException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpException.php',
-        'Phroute\\Phroute\\Exception\\HttpMethodNotAllowedException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpMethodNotAllowedException.php',
-        'Phroute\\Phroute\\Exception\\HttpRouteNotFoundException' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Exception/HttpRouteNotFoundException.php',
-        'Phroute\\Phroute\\HandlerResolver' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/HandlerResolver.php',
-        'Phroute\\Phroute\\HandlerResolverInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/HandlerResolverInterface.php',
-        'Phroute\\Phroute\\Route' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/Route.php',
-        'Phroute\\Phroute\\RouteCollector' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteCollector.php',
-        'Phroute\\Phroute\\RouteDataArray' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataArray.php',
-        'Phroute\\Phroute\\RouteDataInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataInterface.php',
-        'Phroute\\Phroute\\RouteDataProviderInterface' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteDataProviderInterface.php',
-        'Phroute\\Phroute\\RouteParser' => __DIR__ . '/..' . '/phroute/phroute/src/Phroute/RouteParser.php',
         'ReCaptcha' => __DIR__ . '/..' . '/pp/recaptcha/Recaptcha.class.php',
         'ReCaptchaResponse' => __DIR__ . '/..' . '/pp/recaptcha/Recaptcha.class.php',
         'RegMail' => __DIR__ . '/..' . '/pp/mail/RegMail.class.php',
         'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
+        'Session' => __DIR__ . '/..' . '/pp/session/Session.class.php',
         '_404Message' => __DIR__ . '/..' . '/pp/_404/Message.class.php',
         'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
         'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
@@ -103,8 +78,6 @@ class ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd4e2b66b9cfe4558a9b8018aae8dc3b8::$classMap;
 

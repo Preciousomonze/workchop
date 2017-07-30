@@ -97,7 +97,7 @@
 	  *
 	  * @return boolean, returns true if the session is valid, false otherwise.
 	  */
-    public function check_basic_session($session_id){
+    public function check_session_basically($session_id){
 		if(isset($session_id) && !empty($session_id)){
 			return true;
 		}

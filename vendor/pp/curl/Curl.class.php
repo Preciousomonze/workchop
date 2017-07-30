@@ -17,7 +17,7 @@
      * return transfer
      * @var int
      */
-	private $return_transfer = 1;
+//	private $return_transfer = 1;
 		
     /**
      * return transfer
@@ -51,7 +51,9 @@
      */
 		public function get_auth($url){
 			$this->url = $url;
-			// do your thing
+			
+			// do your thing, curl ;)
+			
 			curl_setopt_array($this->curl,array(
 			CURLOPT_RETURNTRANSFER => $this->return_transfer,
 			CURLOPT_URL => $this->url
@@ -59,7 +61,7 @@
 			);
 			$this->result = curl_exec($this->curl);
 			
-			curl_close($this->curl);
+			//curl_close($this->curl);
 			
 			return $this->result;
 			

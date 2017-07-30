@@ -6,5 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Phroute\\Phroute\\' => array($vendorDir . '/phroute/phroute/src/Phroute'),
 );
