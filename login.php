@@ -2,11 +2,13 @@
 require "_parts/_vars.php";
 require "vendor/autoload.php";
  $session = new Session();
- if($session->check_session_basically($user)){
+ if($session->check_session_basically($_SESSION["user"])){
 	 header("location:index.php");
  }
  $success_txt = array();
+ $false = "false";
  if(isset($_POST["submit"])){
+	 
 	 //oya oh, make sure some things aren't empty first
 	 $email = trim($_POST["email"]);
 	 $password = trim($_POST["password"]);
@@ -33,7 +35,7 @@ require "vendor/autoload.php";
 			$success_txt[] = 0;
 				$messages[] = "Sorry, an error occurred, try again later";
 			}
-			else if(!$result){//returned false
+			else if($result == $false){//returned false
 			$success_txt[] = 0;
 				$messages[] = "Incorrect email or password.";
 			}
@@ -42,9 +44,12 @@ require "vendor/autoload.php";
 				$success_txt[] = 1;
 				//split the user result
 				$user_result = explode($delimiter,$result);
+				//echo $result;
 				//create the session
-				$_SESSION["user"] = $user_result[4];
-				header("location:index.php");
+				$_SESSION["user"] = $user_result[6];
+				
+			//	echo $user_result[6];
+				//header("location:index.php");
 				
 			}
 			
