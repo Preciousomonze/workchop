@@ -1,5 +1,5 @@
 <?php session_start();
-require "_parts/_vars.php";
+require "_vars.php";
 require "vendor/autoload.php";
  $session = new Session();
  if($session->check_session_basically($_SESSION["user"])){

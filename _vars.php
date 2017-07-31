@@ -25,7 +25,7 @@
 	*/
   
 define('BASE_PATH',__DIR__ );
-define('BASE_URL','http://localhost/workchop/');
+define('BASE_URL','http://localhost/workchop/workchop/');
 define('USER_AREA','users_lounge/');
 define('PARTS','_parts/');
 
