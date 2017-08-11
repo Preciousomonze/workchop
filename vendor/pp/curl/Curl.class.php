@@ -36,7 +36,13 @@
      * @var string
      */	
 	public $result = false;
-		
+			
+	/**
+     * error
+     * @var string
+     */	
+	public $error = '';
+			
 		
 		public function __construct(){
 			//initialise
@@ -73,9 +79,13 @@
      * @return false if no error is found, or returns the error message.
      */		
 		public function get_error(){
-			if(!curl_exec($this->curl)){
+			$l = strtolower($this->result);
+			if(!curl_exec($this->curl) || strpos($l, "found") ){
 				//return the error message
-				return curl_error($this->curl);
+				//echo curl_error($this->curl). " yes";
+				
+				$this->error = curl_error($this->curl);
+				return true;
 			}
 			else{
 				return false;

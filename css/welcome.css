@@ -1,0 +1,18 @@
+/*
+ * extras
+ * author: precious omonzejele
+ */
+
+ .nav-dropdown .link.dropdown-toggle:after {
+    display: none !important;
+}
+
+ 
+.mbr-section-full > .mbr-table-cell {
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+ 
+ #features2-4 .striped .mbr-cards-col:nth-child(2n+1) {
+    background-image: linear-gradient(to bottom, #00a3d8, #04467e) !important;
+}

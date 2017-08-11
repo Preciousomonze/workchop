@@ -26,7 +26,7 @@
 	{
 		//display the base url here
 		
-		$url = BASE_URL."/".$url_path;
+		$url = BASE_URL."".$url_path;
 		echo $url;
 	}
 	/*

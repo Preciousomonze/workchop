@@ -2,8 +2,8 @@
 require "_vars.php";
 require "vendor/autoload.php";
  $session = new Session();
- if($session->check_session_basically($_SESSION["user"])){
-	 header("location:index.php");
+ if($session->check_session_basically($user)){
+	 header("location:home.php");
  }
  $success_txt = array();
  $false = "false";
@@ -48,8 +48,8 @@ require "vendor/autoload.php";
 				//create the session
 				$_SESSION["user"] = $user_result[6];
 				
-			//	echo $user_result[6];
-				//header("location:index.php");
+				echo $_SESSION["user"];
+				header("location:index.php");
 				
 			}
 			
@@ -69,10 +69,11 @@ require "vendor/autoload.php";
   <link rel="icon" href="workchopphoneicon.png">
 		
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
   <link rel="stylesheet" href="assets/css/login-style.css" type="text/css">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+ 
 </head>
 
 <body>
@@ -81,7 +82,7 @@ require "vendor/autoload.php";
   <div class="logo" style="text-align:center;">
 <a href="index.html"><img src="http://www.workchopapp.com/images/icon.png" alt="workchop"></a>
 </div>
-	<h1>Login</h1>
+	<h1>Log In</h1>
 	<div class="adjust-alert-msg">
 						
 						 <?php if(isset($messages)){
