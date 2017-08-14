@@ -6,7 +6,7 @@
  * OTHERWISE, CONTACT THE WRITER
  * OMONZEJELE PRECIOUS
  * @author Jempton
- * @contributors ...add your names here
+ * @contributors Haastrup Adejoke
  * COPYRIGHT
   */
   require "_vars.php";
@@ -19,14 +19,14 @@
 	 * @var string path 
 	 * @returns string
 	 * @author precious omonze
-	 * @contributors ...add your names here.
+	 * @contributors Haastrup Adejoke
 	*/
   
 	function base_url($url_path = "")
 	{
 		//display the base url here
 		
-		$url = BASE_URL."".$url_path;
+		$url = BASE_URL."/".$url_path;
 		echo $url;
 	}
 	/*
@@ -38,7 +38,7 @@
 	 * @var string path 
 	 * @returns string
 	 * @author precious omonze
-	 * @contributors ...add your names here.
+	 * @contributors Haastrup Adejoke
 	*/
   
 	function base_path($url_path = "")

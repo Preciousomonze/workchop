@@ -33,12 +33,12 @@
                <li id="home-page"><a href="#home-page">
                        <i class="icon fa-home"></i>
                        <span>Home</span></a></li>
-				<li id="profile-page"><a href="http://localhost/new_medirec//patients_ui/profile.php">
+				<li id="profile-page"><a href="profile.php">
                         <i class="icon fa-user"></i><span>Profile</span></a></li>
-                <li id="message-page"><a href="#services">
+                <li id="message-page"><a href="messages.php">
                         <i class="icon fa-comment"></i>
                         <span>Message</span></a></li>
-                 <li><a href="#contact">
+                 <li><a href="logout.php">
                          <i class="icon fa-sign-out"></i>
                          <span>Logout</span></a></li>
               

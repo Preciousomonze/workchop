@@ -4,7 +4,7 @@
  * if you know what you're doing, add your name to the contributors list
  * 
  * @author Precious Omonzejele
- * @contributors ..add names here,separate with comma
+ * @contributors ..Haastrup Adejoke
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
  

@@ -8,7 +8,7 @@
  * OTHERWISE, CONTACT THE WRITER
  * OMONZEJELE PRECIOUS
  * @author Jempton
- * @contributors ...add your names here
+ * @contributors ......Haastrup Adejoke
  * COPYRIGHT
   */
   
@@ -25,7 +25,7 @@
 	*/
   
 define('BASE_PATH',__DIR__ );
-define('BASE_URL','http://localhost/workchop/');
+define('BASE_URL','http://localhost/workchop/workchop/');
 define('USER_AREA','users_lounge/');
 define('PARTS','_parts/');
 define('AJAX_PART','_&ajax_something/');

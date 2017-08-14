@@ -33,7 +33,7 @@ require "vendor/autoload.php";
 			
 			if($curl->get_error()){//if it returns true
 			$success_txt[] = 0;
-				$messages[] = "Sorry, an error occurred, try again later";
+				$messages[] = "Sorry, an error occurred, bla try again later";
 			}
 			else if($result == $false){//returned false
 			$success_txt[] = 0;
@@ -48,8 +48,8 @@ require "vendor/autoload.php";
 				//create the session
 				$_SESSION["user"] = $user_result[6];
 				
-				echo $_SESSION["user"];
-				header("location:index.php");
+				//echo $_SESSION["user"];
+				header("location:home.php");
 				
 			}
 			

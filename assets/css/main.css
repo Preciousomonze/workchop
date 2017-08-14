@@ -3,7 +3,7 @@
 /*
  * Main styling for workchop
  * @author Precious Omonze
- * @contributors ..add names, separate with comma
+ * @contributors ..Haastrup Adejoke
  */
  body {	color:#666;
  //font:300 15px/15px Roboto,Arial,Helvetica;
@@ -77,7 +77,7 @@ outline: none !important;
   }
   
   .navbar a:hover, .navbar .active a{
-	  color: #ca080f  !important;
+	  color: #ca081f  !important;
 	  background-color: transparent !important;
   }
    .navbar .active a span{
@@ -172,7 +172,7 @@ outline: none !important;
 .inside .head{
 	border-bottom:1px solid rgba(0,0,0,0.1);
 	padding:20px 12px;
-		box-shadow: 0 1px 0 rgba(12,13,14,0.1),0 1px 3px rgba(12,13,14,0.1),0 4px 20px rgba(12,13,14,0.035),0 1px 1px rgba(12,13,14,0.025);
+	box-shadow: 0 1px 0 rgba(12,13,14,0.1),0 1px 3px rgba(12,13,14,0.1),0 4px 20px rgba(12,13,14,0.035),0 1px 1px rgba(12,13,14,0.025);
 	
 }
 
@@ -188,7 +188,8 @@ outline: none !important;
 
 .inside.activity-stream .body{
 	padding:10px;
-	background-color:#f8f8f8;
+	background-color:#f8f8f8; 
+	
 }
 .inside.activity-stream .body .big-search{
 	text-align:center;
@@ -196,17 +197,20 @@ outline: none !important;
 	padding:50px 5px 95px 5px;
 	text-shadow:0px 1px 0px rgba(255,255,255,1);
 	font-weight:600;
-	font-size:21px;
+	font-size:21px; 
+	
 }
 .inside.activity-stream .body .icon{
 	font-size:150px !important;
 	text-align:center;
+	color:#0075d8 !important;
 }
 
 /*right side menu*/
 .right-side-menu{
 	color:#454545;
 	font-size:15px;
+	padding-top: 10px;
 }
 
 .right-side-menu ul{
@@ -248,4 +252,27 @@ outline: none !important;
 
 .right-side-menu ul a:hover .icon,.right-side-menu ul li.active .icon{	
 	color:#ffdf00;
+}
+
+/**This begins the css sturffs for profile**/ 
+
+
+.profile-body .head{
+	padding:15px 10px;
+	
+}
+
+
+.head .write{
+	font-weight:lighter;
+	font-size:2em;
+	
+}
+
+
+.body-part{
+	height:auto;
+	width:100%;
+	padding:10px;
+	background-color:#ffffff;
 }
