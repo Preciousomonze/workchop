@@ -2,10 +2,15 @@
 
 /**Finally, i get the chance to comment first :)
 
+This is the profile page that shows imbe customers
+DON'T EDIT THIS CODE IF YOU DON'T KNOW WHAT YOU ARE DOING.
+ * if you know what you're doing, add your name to the contributors list
+ * 
+ * @author Haastrup Adejoke
+ * @contributors ....add your name should be seperated with a comma
+ * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
+ */
 
-
-
-*/
 require "_parts/_functions.php";
 
 require "vendor/autoload.php";
@@ -124,6 +129,7 @@ else{
 				
 				<?php
 				//This inherits from home.php the class inside and class head 
+				//And also the start of profile tag!
 				?>
 				<div class = "profile-body inside"> 
 					<div class = "head"><p class = "write">Profile</p></div>
@@ -164,13 +170,26 @@ else{
 						
 						
 						
-						
 						</form>
 
 
 
+					</div> 
+					<?php // END OF PROFILE TAG!?> 
+					
+			
+					
+				</div> 
+				
+				
+				<?php //START OF TRADESMAN TAG!?>  
+					<div class = "tradesman-body inside"> 
+					<div class = "head"><p class = "write">Tradesman</p></div>
+					<div class = "body-part"> 
+				
 					</div>
-				</div>
+					</div>
+				
 				
 				
 				</div>

@@ -275,4 +275,26 @@ outline: none !important;
 	width:100%;
 	padding:10px;
 	background-color:#ffffff;
+} 
+
+.profile-body input{
+	padding:2px; 
+	border:none;
+	border-bottom:2px solid !important; 
+	
+
+	
+}
+
+/**tradesman tag css**/
+
+.tradesman-body{
+	
+	margin-top:25px;
+}
+
+.tradesman-body .head{
+	padding:20px 10px;  
+	
+	
 }
