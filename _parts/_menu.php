@@ -30,7 +30,7 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-               <li id="home-page"><a href="#home-page">
+               <li id="home-page"><a href="home.php">
                        <i class="icon fa-home"></i>
                        <span>Home</span></a></li>
 				<li id="profile-page"><a href="profile.php">

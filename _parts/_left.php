@@ -1,4 +1,5 @@
-<?php //left part ?>
+<?php //left part ?> 
+			<a href = "profile.php">
 			<div class="col-md-3 profile-sidebar">
 			<?php 
 			//get the user url picture
@@ -14,5 +15,6 @@
 			?>
 				<img class="profile-picture" src="<?php echo $pic_url; ?>" alt="<?php echo $firstname ." ".$surname; ?>">
 			<p class="their-names"><?php echo $firstname ." ".$surname; ?></p>
-			</div>
+			</div> 
+			</a>
 				
