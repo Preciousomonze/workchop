@@ -280,7 +280,7 @@ outline: none !important;
 .profile-body input{
 	padding:2px; 
 	border:none;
-	border-bottom:2px solid !important; 
+	border-bottom:1px solid rgba(0,0,0,0.1) !important; 
 	
 
 	
