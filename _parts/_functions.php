@@ -48,4 +48,32 @@
 		$url = BASE_PATH."/".$url_path;
 		return $url;
 	}
+	
+	
+	/*
+	 * base path
+	 * 
+	 * for loading the image stuff, if no image was found, it loads the default image
+	 * it is useful when going through directories
+	 * 
+	 * @var string path, the path of the image  
+	 * @returns string
+	 * @author precious omonze
+	 * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :(
+	*/
+  
+	function load_image($url_path)
+	{
+		//initialise curl here
+		$img_curl = new Curl();
+		$pic_url = $url_path;
+			$user_pic = $img_curl->get_auth($pic_url);
+			//echo $pic_url;
+			if($img_curl->get_error()){
+				$pic_url = USER_AREA."default.jpg";
+			}
+			
+			return $pic_url;
+	}
+	
 ?>
