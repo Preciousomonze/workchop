@@ -1,47 +1,27 @@
 <?php session_start();
 
-/**Finally, i get the chance to comment first :)
-
+/** j: Finally, i get the chance to comment first :)
+* p: Yup imbes are always allowed to do some things first ;)
 This is the profile page that shows imbe customers
 DON'T EDIT THIS CODE IF YOU DON'T KNOW WHAT YOU ARE DOING.
  * if you know what you're doing, add your name to the contributors list
  * 
  * @author Haastrup Adejoke
- * @contributors ....add your name should be seperated with a comma
+ * @contributors Precious Omonzejele
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
 
 require "_parts/_functions.php";
 
 require "vendor/autoload.php";
-$curl = new Curl();
+//$curl = new Curl();
 
  $session = new Session();
  if($session->check_session_basically($user) == false){
 	 header("location:login.php");
 	 exit();
  }
- $result = $curl->get_auth($site_url."mobile_app/get_user_details.php?user_id=".$user);
  
-$firstname = '';
-$surname = '';
-$phone = '';
-$email = '';
-$location_index = '';
-if(!$curl->get_error()){
-
-$user_details = explode($delimiter,$result);
-$firstname = $user_details[1];
-$surname = $user_details[0];
-$phone = $user_details[2];
-$email = $user_details[3];
-$location_index = $user_details[4];
-}
-else{
-	//header("location:".$_SERVER["REQUEST_URI"]);
-//exit; 
-
-}
  ?>
  
  
@@ -54,7 +34,7 @@ else{
    require PARTS."_header.php";
    ?>
    
-	<title>Workchop - Home</title>
+	<title>Profile - Workchop</title>
 
 
             <script type="text/javascript">
@@ -141,28 +121,28 @@ else{
 						<div class = "row" >
 						<div class = "col-sm-6">
 						First Name: <br/> 
-						<input type = "text" name = "firstname" value = "<?php //echo $firstname; ?>"><br/> 
+						<input type = "text" name = "firstname" class="form-control" value = "<?php echo $firstname; ?>"><br/> 
 					</div>
 					
 					<div class = "col-sm-6">
 						Last Name: <br/>
-						<input type = "text" name = "lastname" value = "<?php //echo $lastname; ?>" ><br/>  
+						<input type = "text" name = "lastname" class="form-control" value = "<?php echo $surname; ?>" ><br/>  
 						</div>
 						
 						
 					<div class = "col-sm-6">
 						Email: <br/>
-						<input type = "email" name = "email"  value = "<?php //echo $email; ?>"><br/>  
+						<input type = "email" name = "email" class="form-control" value = "<?php echo $email; ?>"><br/>  
 						</div>
 						
 					<div class = "col-sm-6">
 						Phone: <br/>
-						<input type = "tel" name = "phone" value = "<?php //echo $phone; ?>"><br/>  
+						<input type = "tel" name = "phone" class="form-control"  value = "<?php echo $phone; ?>"><br/>  
 						</div>
 						
 					<div class = "col-sm-6">
 						Location: <br/>
-						<input type = "text" name = "location" value = "<?php //echo $location; ?>"><br/>  
+						<input type = "text" name = "location" value = "<?php echo $location; ?>"><br/>  
 						</div>
 						
 						

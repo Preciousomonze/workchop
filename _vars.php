@@ -23,9 +23,27 @@
 	 * @author precious omonze
 	 * @contributors ...add your names here.
 	*/
-  
+	
+	/*create a file outside this folder called w_vars.php
+	 * add this code to it $commiter = "yourname";
+	 * as you can see the switch case, you can add your own case to it, and define your base url
+	 * don't be disturbing me, ah :-|
+	 */
+  require "../w_var.php";
 define('BASE_PATH',__DIR__ );
-define('BASE_URL','http://localhost/workchop/workchop/');
+//the extra part for development purposes
+switch($commiter){
+	case "precious":
+		define('BASE_URL','http://localhost/workchop/');
+		break;
+	case "joke":
+		define('BASE_URL','http://localhost/workchop/workchop/');
+		break;
+	default:
+		define('BASE_URL','http://localhost/workchop/');
+	
+}
+###################
 define('USER_AREA','users_lounge/');
 define('PARTS','_parts/');
 define('AJAX_PART','_&ajax_something/');
