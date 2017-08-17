@@ -9,6 +9,8 @@ $surname = '';
 $phone = '';
 $email = '';
 $location_index = '';
+$location = '';
+
 if(!$user_curl->get_error()){
 
 $user_details = explode($delimiter,$result);
@@ -17,7 +19,7 @@ $surname = $user_details[0];
 $phone = $user_details[2];
 $email = $user_details[3];
 $location_index = $user_details[4];
-$location = get_location($location_index);
+$location = get_location($location_index,$location_args);
 }
 else{
 	//header("location:".$_SERVER["REQUEST_URI"]);
