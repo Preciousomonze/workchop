@@ -1,0 +1,368 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(css/font-awesome.css);
+/*
+ * Main styling for workchop
+ * @author Precious Omonze
+ * @contributors ..Haastrup Adejoke
+ */
+ body {	color:#666;
+ //font:300 15px/15px Roboto,Arial,Helvetica;
+ font-family:'Segoe UI',Tahoma,Helvetica,sans-serif;
+ background-color:#fafafa;
+ -webkit-font-smoothing:antialiased;
+ }
+
+a{color:#00a9c6; text-decoration:none;}
+a:hover{color:#666;}
+.btn,a,.btn:hover,a:hover {
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+outline: none !important;
+}
+
+.center{
+	text-align:center;
+}
+ 
+/* ICONS */
+.icon {
+		text-decoration: none;
+		border-bottom: none;
+		position: relative;
+	}
+
+		.icon:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none !important;
+		}
+		
+/*btn feel*/
+.btn-feel{
+	border:1px solid rgba(0,0,0,0.2);
+	background-image:linear-gradient(to bottom, #ffffff, #fcfcfc);
+}
+		
+/* menu */
+
+  /*Menu design */
+  .navbar{
+	  background-color: #0075d8;
+	  box-shadow: 0 1px 0 rgba(12,13,14,0.1),0 1px 3px rgba(12,13,14,0.1),0 4px 20px rgba(12,13,14,0.035),0 1px 1px rgba(12,13,14,0.025);
+	  border-top:3px solid #ffdd00;
+	  color:#fff;
+	  text-shadow:0px 1px 1px rgba(0,0,0,0.4);
+  }
+   .navbar .navbar-brand{
+	   border-right:none;
+	   //position:relative;
+   }
+   
+   .navbar-brand img{
+	width:120%;
+   }
+   .navbar-brand span{
+	   vertical-align:middle;
+	   position:absolute;
+	   top:2px;
+	   left:8px;
+	   font-size:19px !important;
+   }
+  
+  .navbar a{
+	  color:inherit !important;
+	  border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  .navbar a:last{
+	  border-right:1px solid transparent !important;
+  }
+  
+  .navbar a:hover, .navbar .active a{
+	  color: #fff  !important;
+	  background-color: transparent !important;
+	  border-bottom:3px solid #ffdd00;
+  }
+   .navbar .active a span{
+  
+	  font-weight:600 !important;
+  }
+
+  /*RULES*/
+  @media (min-width:768px) {
+      .navbar a:hover:before, .navbar .active a:before{
+
+          content: "";
+          position: absolute;
+          top: -9%;
+          z-index: -1 !important;
+          left: 45%;
+         // background-color:#ca080f;
+
+          height: 10px;
+          width: 10px;
+          border-right: 1px solid rgba(0,0,0,0.2);
+          border-bottom: 1px solid rgba(0,0,0,0.2);
+          transform: rotate(45deg);
+      }
+
+
+      .navbar a .icon {
+		  margin-right:5px;
+          text-align: center;
+          font-size: 19px;
+      }
+
+      .navbar a span {
+          font-size: 12px;
+          font-weight: 500;
+      }
+
+  }
+
+  @media (max-width:767.99px) {
+
+      .navbar a .icon {
+        margin-right:7px;
+          font-size:17px;
+          width:20px;
+      }
+
+      .navbar a span {
+          font-size: 17px;
+          //font-weight: 500;
+
+      }
+
+  }		
+	/*end of navbar ====================================================== */
+
+.whole-body{
+	margin-top:120px;
+}	
+		
+/* Home page */
+.profile-sidebar{
+	padding:10px;
+	text-shadow: 0px 1px 1px rgba(255,255,255,1);
+	text-align: center;
+}
+
+.profile-sidebar img{
+	border-radius:10px;
+	width:100%;
+	border:5px solid rgba(255,255,255,1);
+	box-shadow:1px 3px 2px 1px rgba(0,0,0,0.2);
+}
+
+.profile-sidebar .their-names{
+	font-weight:600;
+	font-size:19px;
+	margin-top:10px;
+}
+
+/*center body*/
+.center-body{
+	padding:10px;
+}
+
+.center-body .inside{
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius:2px;
+	background-color:#ffffff;
+}
+
+.inside .head{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:20px 12px;
+	box-shadow: 0 1px 0 rgba(12,13,14,0.1),0 1px 3px rgba(12,13,14,0.1),0 4px 20px rgba(12,13,14,0.035),0 1px 1px rgba(12,13,14,0.025);
+	
+}
+
+.head form select{
+	border-radius:1px !important;
+	position:relative;
+	right:7px;
+}
+
+.head form button{
+	
+}
+
+.inside.activity-stream .body{
+	padding:10px;
+	background-color:#f8f8f8; 
+	
+}
+.inside.activity-stream .body .big-search{
+	text-align:center;
+	margin:auto;
+	padding:50px 5px 95px 5px;
+	text-shadow:0px 1px 0px rgba(255,255,255,1);
+	font-weight:600;
+	font-size:21px; 
+	
+}
+.inside.activity-stream .body .icon{
+	font-size:150px !important;
+	text-align:center;
+	color:#0075d8 !important;
+}
+
+/*right side menu*/
+.right-side-menu{
+	color:#454545;
+	font-size:15px;
+	padding-top: 10px;
+}
+
+.right-side-menu ul{
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:2px;
+	list-style:none;
+	background-color:#ffffff;
+	padding: 0;
+	border-right:4px solid #0075d8;
+}
+	
+
+.right-side-menu ul li{
+	display:block;
+	margin:0;
+	
+}	
+
+
+.right-side-menu ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:16px 7px;
+	color:inherit;
+	text-decoration:none;
+}
+
+.right-side-menu ul a:hover,.right-side-menu ul li.active a{	
+	text-decoration:none;
+	border-left:3px solid #ffdf00;
+}
+
+.right-side-menu ul li .icon{
+	font-size:18px ;
+	margin-right:5px;
+}
+
+.right-side-menu ul a:hover .icon,.right-side-menu ul li.active .icon{	
+	color:#ffdf00;
+}
+
+/**This begins the css sturffs for profile**/ 
+
+
+.profile-body .head{
+	padding:15px 10px;
+	
+}
+
+
+.head .write{
+	font-weight:lighter;
+	font-size:2em;
+	
+}
+
+
+.body-part{
+	height:auto;
+	width:100%;
+	padding:10px;
+	background-color:#ffffff;
+} 
+
+.profile-body input{
+	padding:2px; 
+	border:none;
+	border-bottom:1px solid rgba(0,0,0,0.1) !important; 
+	
+
+	
+}
+
+/**tradesman tag css**/
+
+.tradesman-body{
+	
+	margin-top:25px;
+}
+
+.tradesman-body .head{
+	padding:20px 10px;  
+	
+	
+}
+
+/*messages part*/
+.messages{
+	
+}
+
+.messages .message-box{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:10px 5px;
+}
+
+.messages .message-box img{
+	width:70%;
+	-moz-border-radius:100%;
+	-webkit-border-radius:100%;
+	-o-border-radius:100%;
+	-ms-border-radius:100%;
+	margin:auto;
+	border-radius:100%;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+.message-box .person-name{
+font-size: 19px;
+margin: 5px 0;
+word-wrap: normal;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 25px;
+white-space: nowrap;
+width: 89%;
+
+}
+
+.message-box .message-part{
+	font-size:15px;
+margin: 5px 0;
+word-wrap: normal;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 25px;
+white-space: nowrap;
+width: 89%;
+}
+.message-box .detail-section{
+	margin:5px 5px;
+	
+}
+
+.message-box.two{
+	background-color:#fafafa !important;
+}
+
+.message-box.unread{
+	background-color: #0075d81a !important;
+    font-weight: 600;
+
+}
+
+.message-box .
