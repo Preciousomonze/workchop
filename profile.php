@@ -18,8 +18,8 @@ require "vendor/autoload.php";
 
  $session = new Session();
  if($session->check_session_basically($user) == false){
-	 header("location:login.php");
-	 exit();
+	 //header("location:login.php");
+	 //exit();
  }
  
  ?>
@@ -112,7 +112,7 @@ require "vendor/autoload.php";
 				//And also the start of profile tag!
 				?>
 				<div class = "profile-body inside"> 
-					<div class = "head"><p class = "write">Profile</p></div>
+					<div class = "head"><p class = "write"><i class = "icon fa-user"></i> Profile</p></div>
 					<div class = "body-part"> 
 						
 						<form> 
@@ -141,8 +141,8 @@ require "vendor/autoload.php";
 						</div>
 						
 					<div class = "col-sm-6">
-						Location: <br/>
-						<input type = "text" name = "location" value = "<?php echo $location; ?>"><br/>  
+						Location:<br/>
+						<input type = "text" name = "location" value = "<?php //echo $location; ?>">
 						</div>
 						
 						
@@ -164,9 +164,48 @@ require "vendor/autoload.php";
 				
 				<?php //START OF TRADESMAN TAG!?>  
 					<div class = "tradesman-body inside"> 
-					<div class = "head"><p class = "write">Tradesman</p></div>
+					<div class = "head"><p class = "write"><i class = "icon fa-group"></i>Tradesman</p></div>
 					<div class = "body-part"> 
 				
+					<?php //Oya oh lets kill this bish!?>
+					
+					<div class = "trade-inside">
+					<ul>
+					<li><a href = "#">
+					
+					<i class = "icon fa-arrow-right"></i>Master blah 
+					<i class = " pull-right icon fa-angle-right"></i>
+					<span class ="pull-right wc-badge">3</span>
+					</a></li> 
+					
+					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
+					<i class = " pull-right icon fa-angle-right"></i> 
+					<span class ="pull-right wc-badge">3</span>
+					</a></li> 
+					
+					
+					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
+					<i class = " pull-right icon fa-angle-right"></i>
+					<span class ="pull-right wc-badge">3</span>
+					</a></li>
+					
+					
+					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
+					<i class = " pull-right icon fa-angle-right"></i>
+					<span class ="pull-right wc-badge">3</span>
+					</a></li> 
+					
+					
+					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
+					<i class = " pull-right icon fa-angle-right"></i>
+					<span class ="pull-right wc-badge">3</span>
+					</a></li>
+					
+					</ul>
+					
+					
+					</div>
+					
 					</div>
 					</div>
 				

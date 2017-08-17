@@ -213,6 +213,7 @@ outline: none !important;
 	padding-top: 10px;
 }
 
+
 .right-side-menu ul{
 	border:1px solid rgba(0,0,0,0.1);
 	border-radius:2px;
@@ -260,6 +261,12 @@ outline: none !important;
 .profile-body .head{
 	padding:15px 10px;
 	
+} 
+
+.profile-body .head .icon{
+	font-size:1.2em;
+	color:#0075d8;
+	
 }
 
 
@@ -295,6 +302,71 @@ outline: none !important;
 
 .tradesman-body .head{
 	padding:20px 10px;  
+		
+}
+
+.write .icon{
+	font-size:1.2em;
+	color:#0075d8;
 	
+} 
+
+.trade-inside{
+	color:#666 !important;
+	font-size:15px;
+	padding-top:10px; 
+	
+} 
+
+.trade-inside ul{
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:2px;
+	list-style:none;
+	background-color:#ffffff;
+	padding: 0;
+	//border-right:4px solid #0075d8;
+} 
+
+
+.trade-inside ul li{
+	
+	display:block;
+	margin:0;
+	
+}   
+
+.trade-inside ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:16px 7px;
+	color:inherit;
+	text-decoration:none;	
+}
+
+ 
+.trade-inside ul a:hover,.trades-inside ul li.active a{	
+	text-decoration:none;
+	border-left:4px solid #0075d8;
+} 
+
+.trade-inside ul li .icon{
+	font-size:18px ;
+	margin-right:10px;
+} 
+
+.wc-badge{
+padding:5px 10px;
+
+border:2px solid rgba(0,0,0,0.2);
+background-color:#0075d8;
+
+color:#ffffff;
+text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+margin-right:15px;
+border-radius:2px;
 	
 }
+
+
