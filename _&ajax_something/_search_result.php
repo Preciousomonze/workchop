@@ -55,6 +55,21 @@
  if(!$curl->get_error()){
 	 //get the tradesman details
 	 $tradesmen = explode($tradesman_split,$result);
+	 
+	 if(count($tradesmen) < 1){
+		 
+	?>
+		 
+	 <div class="big-search">
+			<i class="icon fa-frown-o"></i>
+			<p class="inscribed">No tradesman found</p>
+						
+	 </div>
+
+	<?php
+	}
+	else{
+	 
 		//keep counting
 		for($i = 0; $i < count($tradesmen); $i++){
 			if($i == 4){//once it's 5, like tomiwa said, don't show again
@@ -67,20 +82,100 @@
 			 $t_rating = $tradesman[2];
 			 $t_story = $tradesman[5];
 			 
+			 //get tradesman-pishure
+			 $t_pishure = $site_url."mobile_app/vendor_pictures/."$t_id.".jpg";
 			 
 				?>
 		 
 		 <div class="tradesman-result">
+		  <div class="main-body">
+		  <section>
 			<div class="row">
-				<div class="col-md-3">
-					<img 
-				</div><?php //column ?>
-			</div><?php //row ?>
+				<div class="col-xs-3">
+					<img src="<?php echo $load_image($t_pishure); ?>" alt="<?php echo $t_name; ?>">
+				</div><?php //column 
+				?>
+				
+				<div class="col-xs-9">
+				<div class="name">
+					<?php echo $t_name; ?>
+				</div><?php //column 
+				?>
+			</div><?php //row 
+			?>
+			</section>
+			<section class="review-show">
+				<?php // get the review-show
+				$review_link = $site_url."mobile_app/get_review.php?vendor_id=".$t_id;
+				$tradesman_review = $curl->get_auth($review_link);
+				if(!$curl->get_error()){
+					//show something,
+					//explode
+					$tradesman_review = explode($delimiter,$tradesman_info);
+					//get the rating bla
+					$rate = $tradesman_info[3];
+					//maximum rating is 5,so show five,
+					//but now determine by showing the rating level, hmm,sounds complex. :(
+					for($r =0; $r < 5; $r++){
+						//only colour if r is less than the rate
+						if($r < $rate){//paint the star
+							?>
+							<i class="icon fa-star"></i> 
+							<?php
+						}
+						else{//empty star
+						?>
+						
+							<i class="icon fa-star-o"></i> 
+						<?php
+						}
+					}
+				}
+				?>
+				
+			</section>
+			<section class="tradesman-story">
+				<?php // get the review-show
+				echo $t_story;
+				?>
+			</section>
+			
+			</div><?php //main-body 
+			//now we need to get the vendor's info,so lets curl the url, you get the pun?
+			$result = $curl->get_auth($site_url."mobile_app/get_vendor_info.php?vendor_id=".$t_id);
+			if(!$curl->get_error){//out of variable names, bear with me, don't roar though ;).
+				$t_result = explode($delimiter,$result);
+				$t_phone = $t_result[1];
+				$t_email = $t_result[2];
+				//check if the tradesman has the app installed
+				$has_app = '';
+				$app_result = trim($curl->get_auth($site_url."mobile_app/check_smart_vendor.php?vendor_id=".$t_id."&user_id=".$user));
+				
+				if(!$curl->get_error()){
+					if($app_result == "1"){
+						//the tradesman has a happ.
+						$has_app = "<a href=\"#message-pop\" onclick=\"show_side_message()\" title=\"Message ".$t_name."\">
+						<i class=\"icon fa-comment\"></i></a>";
+					}
+				}
+				
+			?>
+			<div class="footer">
+			<a href="tel:<?php echo $t_phone; ?>" class="call-btn"><i class="icon fa-phone"></i></a>
+			<a href="mailto:<?php echo $t_email; ?>" class="call-btn"><i class="icon fa-envelope"></i></a>
+			<?php 
+			echo $has_app; 
+			?>
+			
+			</div>
+			<?php
+			}
+			?>
 		 </div>
 		 <?php
 		 
  }
- 
+	}
  }
  else{
 	 //i'm tired, do nothing
