@@ -9,28 +9,7 @@ $curl = new Curl();
 	 header("location:login.php");
 	 exit();
  }
- $result = $curl->get_auth($site_url."mobile_app/get_user_details.php?user_id=".$user);
  
-$firstname = '';
-$surname = '';
-$phone = '';
-$email = '';
-$location_index = '';
-if(!$curl->get_error()){
-
-$user_details = explode($delimiter,$result);
-$firstname = $user_details[1];
-$surname = $user_details[0];
-$phone = $user_details[2];
-$email = $user_details[3];
-$location_index = $user_details[4];
-}
-else{
-	//header("location:".$_SERVER["REQUEST_URI"]);
-//exit; 
-
-	
-}
  ?>
 <!DOCTYPE html>
 	<html>
@@ -74,20 +53,6 @@ else{
                         //when the edit profile is clicked
 
                 ?>
-                 var profile_edit_status = 0;
-
-                    $("#profile-edit").click(function(){
-
-                        //if(profile_edit_status == 0){
-                        $(".whole-body").hide();
-                        //}
-
-                        //else{
-                        $("#profile input").removeAttr("readonly");
-                        //}
-
-                    });
-
 
 
 
