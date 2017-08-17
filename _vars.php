@@ -34,10 +34,10 @@ define('BASE_PATH',__DIR__ );
 //the extra part for development purposes
 switch($commiter){
 	case "precious":
-		define('BASE_URL','http://localhost/workchop/');
+		define('BASE_URL','http://localhost/workchop');
 		break;
 	case "joke":
-		define('BASE_URL','http://localhost/workchop/workchop/');
+		define('BASE_URL','http://localhost/workchop/workchop');
 		break;
 	default:
 		define('BASE_URL','http://localhost/workchop/');
@@ -53,6 +53,7 @@ define('AJAX_PART','_&ajax_something/');
  $tradesman_details_split = "----";
  $tradesman_split = "==========";
  $user = (isset($_SESSION["user"]) ? $_SESSION["user"] : "" );
+ //for some js stuff
  
 $tradesman_args = array(
 'Master Gas Supplier' => 1,
