@@ -86,12 +86,13 @@
 	 * it is useful when going through directories
 	 * 
 	 * @var int location_index, the location index of the location  
+	 * @var array location_args, the array of the locations
 	 * @returns string
 	 * @author precious omonze
 	 * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :(
 	*/
   
-	function get_location($location_index)
+	function get_location($location_index,$location_args)
 	{
 		$location_index = trim($location_index);
 		//loop through the location args
@@ -102,7 +103,7 @@
 		foreach($location_args as $name => $id){
 			if($id == $location_index){
 				//baam, gotten the value, store then break, if it was in java, it would be, copy and then paste, joke will understande :)
-				$location = $key;
+				$location = $name;
 				break;
 			}
 		}
