@@ -164,7 +164,7 @@ require "vendor/autoload.php";
 				
 				<?php //START OF TRADESMAN TAG!?>  
 					<div class = "tradesman-body inside"> 
-					<div class = "head"><p class = "write"><i class = "icon fa-group"></i>Tradesman</p></div>
+					<div class = "head"><p class = "write"><i class = "icon fa-group"></i> Tradesman</p></div>
 					<div class = "body-part"> 
 				
 					<?php //Oya oh lets kill this bish!?>
