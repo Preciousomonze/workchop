@@ -11,7 +11,7 @@
  * @contributors ......Haastrup Adejoke
  * COPYRIGHT
   */
-  
+  $commiter = "precious";
 	/*
 	 * base url
 	 * 
@@ -29,8 +29,9 @@
 	 * as you can see the switch case, you can add your own case to it, and define your base url
 	 * don't be disturbing me, ah :-|
 	 */
-  require "../w_var.php";
 define('BASE_PATH',__DIR__ );
+
+ // require_once BASE_PATH."/w_var.php";
 //the extra part for development purposes
 switch($commiter){
 	case "precious":
@@ -40,7 +41,7 @@ switch($commiter){
 		define('BASE_URL','http://localhost/workchop/workchop');
 		break;
 	default:
-		define('BASE_URL','http://localhost/workchop/');
+		define('BASE_URL','http://localhost/workchop');
 	
 }
 ###################
@@ -53,6 +54,7 @@ define('AJAX_PART','_&ajax_something/');
  $tradesman_details_split = "----";
  $tradesman_split = "==========";
  $user = (isset($_SESSION["user"]) ? $_SESSION["user"] : "" );
+ $chat_delimiter = "------";
  //for some js stuff
  
 $tradesman_args = array(

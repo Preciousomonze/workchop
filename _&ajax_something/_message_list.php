@@ -7,7 +7,7 @@
  * @contributors ..Haastrup Adejoke
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
- 
+ require "../_vars.php";
  require "../_parts/_functions.php";
  //call the main imbe that loads all my niggas.
  require "../vendor/autoload.php";
@@ -20,89 +20,67 @@
 	 exit();
  }
  //get the request
- $vendor_type = trim($_POST["tradesman_type"]);
- $location = trim($_POST["location"]);
- $url = $site_url."mobile_app/search_engine.php?vendor_type=".$vendor_type."&user_id=".$user."&location_index=".$location;
- 
- //check if the inputs are null
- if(empty($vendor_type)){
-	 ?>
-	 <div class="big-search">
-			<i class="icon fa-delete"></i>
-			<p class="inscribed">Please select a type of tradesman</p>
-						
-	 </div>
-	 <?php
- }
- else if(empty($location)){
-	 ?>
-	 
-	 <div class="big-search">
-			<i class="icon fa-delete"></i>
-			<p class="inscribed">Please select a location</p>
-						
-	 </div>
-	 <?php
- }
- else{
-	 
- 
+$url = $site_url."mobile_app/get_user_chat_list.php?user_id=".$user."";
  $curl = new Curl();
  
- $result = trim(strtolower($curl->get_auth($url)));
- 
- //check if theres an error
- if(!$curl->get_error()){
-	 //get the tradesman details
-	 $tradesmen = explode($tradesman_split,$result);
-	 
-	 if(count($tradesmen) < 1){
-		 
-	?>
-		 
-	 <div class="big-search">
-			<i class="icon fa-frown-o"></i>
-			<p class="inscribed">Please select a location</p>
-						
-	 </div>
-
-	<?php
-	}
-	else{
-	 
-		//keep counting
-		for($i = 0; $i < count($tradesmen); $i++){
-			if($i == 4){//once it's 5, like tomiwa said, don't show again
-				break;
-			}
-			//split the vendor's details
-			 $tradesman = explode( $tradesman_details_split,$tradesmen[$i]);
-			 $t_name = $tradesman[0];
-			 $t_id = $tradesman[1];
-			 $t_rating = $tradesman[2];
-			 $t_story = $tradesman[5];
-			 
-			 //get tradesman-pishure
-			 $t_pishure = $site_url."mobile_app/vendor_pictures/."$t_id.".jpg";
-			 
-				?>
-		 
-		 <div class="tradesman-result">
-			<div class="row">
-				<div class="col-md-3">
-					<img src="<?php echo $load_image($t_pishure); ?>" alt="">
-				</div><?php //column ?>
-			</div><?php //row ?>
-		 </div>
-		 <?php
-		 
- }
-	}
+ $result = $curl->get_auth($url);
+ if($curl->get_error()){
+	
  }
  else{
-	 //i'm tired, do nothing
-	 
+	 //no error
+	 $messages = explode($chat_delimiter,$result);
+	 if(count($messages) < 1){
+		 //no message
+		 exit();
+	 }
+	 //now loop
+	 for($i = 0; $i < count($messages); $i++){
+		 //get values
+		 $message_details = explode($delimiter,$messages[$i]);
+		 $t_id = $m_details[0];
+		 $t_name = $m_details[1];
+		 $date = $m_details[3];
+		 $unread_no = (int)$m_details[4];
+		 //know if it's unread or not
+		 $badge_no = '';
+		 $is_unread = '';
+		 if($unread_no > 0){
+			 //it's unread
+			 $is_unread = "unread";
+			 $badge_no = "	<span class=\"wc-badge pull-right\">".$unread_no."</span>";
+		 }
+		 ?>
+		 <div class="message-box <?php echo $is_unread; ?>">
+						<section class="message-body">
+							<div class="row">
+								<div class="col-xs-2 center">
+									<img src="<?php echo load_image($site_url."mobile_app/vendor_pictures/".$t_id.".jpg"); ?>" alt="<?php echo $t_name; ?>">
+								</div><?php //col
+								?>
+								<div class="col-xs-10">
+								<?php echo $badge_no; ?>
+									<p class="person-name">
+									 <?php echo $t_name; ?>
+									</p>
+									<p class="message-part">
+									 bla bla bla bla bla bla la something
+									</p>
+								</div><?php //col
+								?>
+								<div class="col-xs-3">
+									
+								</div><?php //col
+								?>
+							</div>
+						</section>
+						<section class="detail-section">
+							<i class="icon fa-clock-o"></i> <span title="time">time</a>
+						</section>
+						
+					</div>
+					
+		 <?php
+	 } 
  }
-
- }
-?>
+ ?>

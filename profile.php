@@ -11,6 +11,7 @@ DON'T EDIT THIS CODE IF YOU DON'T KNOW WHAT YOU ARE DOING.
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
 
+ require_once "_vars.php";
 require "_parts/_functions.php";
 
 require "vendor/autoload.php";

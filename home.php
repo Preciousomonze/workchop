@@ -1,4 +1,6 @@
 <?php session_start();
+
+ require_once "_vars.php";
 require "_parts/_functions.php";
 
 require "vendor/autoload.php";
