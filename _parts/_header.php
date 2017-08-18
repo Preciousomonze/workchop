@@ -10,7 +10,11 @@ $phone = '';
 $email = '';
 $location_index = '';
 $location = '';
+/*
+TEST TRADESMAN ID's - f6317e24eac8e66d71124a327fb8a486, 59cc1e30ac14408a3d38ffbeb60162dd, 55c49998a0f1df61322b9e831586c4c8
 
+TEST USER ID's - 3355191a970a7a8c56819720384b98eb, 58e061365615115e00680ab7896bc1ff, 6e4d3803faf6a96f96c535cc7f25e200
+*/
 if(!$user_curl->get_error()){
 
 $user_details = explode($delimiter,$result);

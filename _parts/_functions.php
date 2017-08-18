@@ -9,7 +9,7 @@
  * @contributors Haastrup Adejoke
  * COPYRIGHT
   */
-  require "_vars.php";
+ // require "_vars.php";
 	/*
 	 * base url
 	 * 
