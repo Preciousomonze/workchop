@@ -46,8 +46,14 @@ require "vendor/autoload.php";
 				$user_result = explode($delimiter,$result);
 				//echo $result;
 				//create the session
+				//check if the user is currently logged in on the phone, so that we know which index the id is
+				$user_result[0] = trim(strtolower($user_result[0]));
+				if($user_result[0] == "logged"){//the imbe is logged in, get the possition
 				$_SESSION["user"] = $user_result[6];
-				
+				}
+				else{
+				$_SESSION["user"] = $user_result[5];
+				}
 				//echo $_SESSION["user"];
 				header("location:home.php");
 				
