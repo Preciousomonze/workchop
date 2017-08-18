@@ -204,13 +204,241 @@ require "vendor/autoload.php";
 					</ul>
 					
 					
-					</div>
+					</div> 
+					<?php //END OF THAT BISH INSIDE TRADESMAN ! we are moving on to greater things?> 
 					
+				
 					</div>
+					</div> 
+				 
+				 <?php// END OF TRADESMAN TAG!?>
+				 
+				 
+				 <?php //TIME TO KILL THIS BISH STORY FOR THE gods AM A PERSONAL VENDOR!?> 
+				 
+				 
+				 <div class = "trade-info">
+					<ul>
+					<li>
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Omonze Prec</p>
+								<p class="person-location"><i class="icon fa-map-marker"></i> 
+								Ajah
+								</p>
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+							<a href="tel"><i class="icon fa-phone"></i></a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
 					</div>
-				
-				
-				
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					<li class="two">
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Omonze Prec</p>
+								<p class="person-location"><i class="icon fa-map-marker"></i> 
+								Ajah
+								</p>
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+							<a href="tel"><i class="icon fa-phone"></i></a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
+					</div>
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					<li>
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Omonze Prec</p>
+								<p class="person-location"><i class="icon fa-map-marker"></i> 
+								Ajah
+								</p>
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+							<a href="tel"><i class="icon fa-phone"></i></a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
+					</div>
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					
+					
+					</ul>
+					
+					
+					</div>  
+					
+					<?php//END OF STORY FOR THE gods TRADESMAN INFO!?> 
+
+					
+					
+					<?php// START OF ADD TRADESMAN LETS FINISH THIS BISH!?> 
+					
+					
+					
+				 <div class = "add-trade">
+					<ul>
+					<li>
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Haastrup joke</p>
+								<div class = "rating">
+								<i class="icon fa-star-o"></i>  
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								</div>
+								
+								<span class = "used-by">Used by 2 contacts</span>
+								
+							
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
+					<a href="tel"><i class="icon fa-phone"></i></a>
+					</div>
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					<li class="two">
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Haastrup joke</p>
+								<div class = "rating">
+								<i class="icon fa-star-o"></i>  
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								</div>
+								
+								<span class = "used-by">Used by 2 contacts</span>
+								
+								
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
+					<a href="tel"><i class="icon fa-phone"></i></a>
+
+					</div>
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					<li>
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Haastrup joke</p> 
+								<div class = "rating">
+								<i class="icon fa-star-o"></i>  
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								</div>
+								<span class = "used-by">Used by 2 contacts</span>
+								
+								</p>
+							</div><?php //col 
+							?>
+							<div class="col-xs-2">
+							
+					 <div class="info-box center">
+					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
+					<a href="#"><i class = "icon fa-envelope"></i></a>
+					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
+					<a href="tel"><i class="icon fa-phone"></i></a>
+
+					</div>
+							</div><?php //col 
+							?>
+						</div>
+					</section>
+					
+				</li> 
+					
+					
+					</ul>
+					
+					
+					</div>  
+					
+					
+					
+					
+					
+					
+			
 				</div>
 			</div>
             
