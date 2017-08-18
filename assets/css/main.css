@@ -23,6 +23,19 @@ transition: all 0.3s ease-in-out;
 outline: none !important;
 }
 
+.center{
+	text-align:center;
+}
+.colour-blue{
+	color:#0075d8;
+}
+.color-gold{
+	color:#ffdd00;
+}
+ 
+textarea{
+	resize: vertical !important;
+} 
  
 /* ICONS */
 .icon {
@@ -50,10 +63,11 @@ outline: none !important;
 
   /*Menu design */
   .navbar{
-	  background-color: rgba(255,255,255,0.8);
-	  border-bottom: 1px solid rgba(0,0,0,0.2);
-	  border-top:4px solid #0075d8;
-	  
+	  background-color: #0075d8;
+	  box-shadow: 0 1px 0 rgba(12,13,14,0.1),0 1px 3px rgba(12,13,14,0.1),0 4px 20px rgba(12,13,14,0.035),0 1px 1px rgba(12,13,14,0.025);
+	  border-top:3px solid #ffdd00;
+	  color:#fff;
+	  text-shadow:0px 1px 1px rgba(0,0,0,0.4);
   }
    .navbar .navbar-brand{
 	   border-right:none;
@@ -72,13 +86,17 @@ outline: none !important;
    }
   
   .navbar a{
-	  color:rgba(0,0,0,0.8) !important;
+	  color:inherit !important;
 	  border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  .navbar a:last{
+	  border-right:1px solid transparent !important;
   }
   
   .navbar a:hover, .navbar .active a{
-	  color: #ca081f  !important;
+	  color: #fff  !important;
 	  background-color: transparent !important;
+	  border-bottom:3px solid #ffdd00;
   }
    .navbar .active a span{
   
@@ -94,7 +112,7 @@ outline: none !important;
           top: -9%;
           z-index: -1 !important;
           left: 45%;
-          background-color:#ca080f;
+         // background-color:#ca080f;
 
           height: 10px;
           width: 10px;
@@ -105,7 +123,7 @@ outline: none !important;
 
 
       .navbar a .icon {
-          display: block;
+		  margin-right:5px;
           text-align: center;
           font-size: 19px;
       }
@@ -132,7 +150,7 @@ outline: none !important;
       }
 
   }		
-	
+	/*end of navbar ====================================================== */
 
 .whole-body{
 	margin-top:120px;
@@ -272,7 +290,7 @@ outline: none !important;
 
 .head .write{
 	font-weight:lighter;
-	font-size:2em;
+	font-size:1.67em;
 	
 }
 
@@ -358,7 +376,7 @@ outline: none !important;
 
 .wc-badge{
 padding:5px 10px;
-
+font-size:14px;
 border:2px solid rgba(0,0,0,0.2);
 background-color:#0075d8;
 
@@ -369,4 +387,140 @@ border-radius:2px;
 	
 }
 
+/*messages part*/
+.messages{
+	
+}
 
+.messages .message-box{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:10px 5px;
+}
+
+.messages .message-box img{
+	width:70%;
+	-moz-border-radius:100%;
+	-webkit-border-radius:100%;
+	-o-border-radius:100%;
+	-ms-border-radius:100%;
+	margin:auto;
+	border-radius:100%;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+.message-box .person-name{
+font-size: 19px;
+margin: 5px 0;
+word-wrap: normal;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 25px;
+white-space: nowrap;
+width: 89%;
+
+}
+
+.message-box .message-part{
+	font-size:15px;
+margin: 5px 0;
+word-wrap: normal;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 25px;
+white-space: nowrap;
+width: 89%;
+}
+.message-box .detail-section{
+	margin:5px 5px;
+	
+}
+
+.message-box.two{
+	background-color:#fafafa !important;
+}
+
+.message-box.unread{
+	background-color: #0075d81a !important;
+    font-weight: 600;
+
+}
+
+.message-box .wc-badge{
+	position:absolute;
+	right:0;
+}
+
+/*message itself*/
+.message-itself{
+	
+}
+.message-itself .inner{
+margin: 5px 15px;
+border-radius: 3px;
+box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.1);
+padding: 10px;
+color: #fff;
+text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+font-size: 14.5px;
+max-width:71%;
+word-wrap:break-word;
+position:relative;
+}
+
+.message-itself .message.left .inner{
+	float: left;
+background-color: #dec50c;
+
+}
+
+
+.message-itself .message.right .inner{
+	float: right;
+background-color: #0075d8;
+
+}
+
+.message-itself .message.left .inner:before{
+			content: "";
+          position: absolute;
+          top: 10px;
+          z-index: 1 !important;
+          left: -7px;
+         background-color: inherit;
+
+          height: 17px;
+          width: 17px;
+          border-left: 1px solid rgba(0,0,0,0.2);
+          border-bottom: 1px solid rgba(0,0,0,0.1);
+          transform: rotate(45deg);
+}
+.message-itself .message.right .inner:after{
+			content: "";
+          position: absolute;
+          top: 10px;
+          z-index: 1 !important;
+          right: -7px;
+         background-color: inherit;
+
+          height: 17px;
+          width: 17px;
+          border-right: 1px solid rgba(0,0,0,0.2);
+          border-top: 1px solid rgba(0,0,0,0.1);
+          transform: rotate(45deg);
+}
+
+
+/*message sending part*/
+.new-message{
+	background-color:#fcfcfc;
+	padding:5px 0;
+}
+
+.new-message textarea{
+	min-height:50px;
+	border-radius:1px;
+}
+.new-message button{
+	font-size:17px;
+	text-shadow:0px 1px 1px rgba(0,0,0,0.1);
+}
