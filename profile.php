@@ -10,7 +10,7 @@ DON'T EDIT THIS CODE IF YOU DON'T KNOW WHAT YOU ARE DOING.
  * @contributors Precious Omonzejele
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
-require "_vars.php";
+require "_vars.php"; 
 require "_parts/_functions.php";
 
 require "vendor/autoload.php";
