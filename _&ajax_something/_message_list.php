@@ -32,6 +32,7 @@ $url = $site_url."mobile_app/get_user_chat_list.php?user_id=".$user."";
 	 $messages = explode($chat_delimiter,$result);
 	 if(count($messages) < 1){
 		 //no message
+		echo "bla bla"; 
 		 exit();
 	 }
 	 //now loop
@@ -83,4 +84,5 @@ $url = $site_url."mobile_app/get_user_chat_list.php?user_id=".$user."";
 		 <?php
 	 } 
  }
+
  ?>

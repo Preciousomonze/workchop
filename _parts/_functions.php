@@ -80,10 +80,10 @@
 	
 	
 	/*
-	 * base path
+	 * get_location
 	 * 
-	 * for loading the image stuff, if no image was found, it loads the default image
-	 * it is useful when going through directories
+	 * for getting the equivalent value of the location index
+	 *
 	 * 
 	 * @var int location_index, the location index of the location  
 	 * @var array location_args, the array of the locations
