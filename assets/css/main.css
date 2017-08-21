@@ -721,3 +721,95 @@ background-color: #0075d8;
 .add-trade .info-box .icon{
 	font-size:15.5px;
 } 
+
+/***THIS IS THE START OF CSS FOR REVIEW***/ 
+.add-review{
+	color:#666 !important;
+	font-size:15px;
+	padding-top:10px; 
+		
+}
+
+
+.add-review ul{
+
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:2px;
+	list-style:none;
+	background-color:#ffffff;
+	padding: 0;
+	//border-right:4px solid #0075d8;	
+	
+} 
+
+
+.add-review ul li{
+	
+	display:block;
+	margin:0;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+} 
+
+
+.add-review ul li a{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:16px 7px;
+	color:inherit;
+	text-decoration:none;	
+}   
+
+
+.add-review ul a:hover{	
+	text-decoration:none;
+	border-bottom:4px solid #0075d8;
+} 
+
+.add-review ul li .icon{
+	font-size:18px ;
+	margin-right:10px;
+}   
+
+.add-review img{
+	width:65%;
+	border-radius: 100%;
+	border: 1px solid rgba(0,0,0,0.2);
+	position:relative;
+	top:15px;
+} 
+
+.add-review .person-name{
+	font-size:20px;
+	margin:15px 0 3px;
+} 
+
+.add-review .rating{
+	font-size:15px;
+	color: rgba(0,0,0,0.6); 
+	
+}
+
+.add-review .icon-box{
+	font-size:15px;
+	color: rgba(0,0,0,0.6); 
+	
+}
+
+
+.add-review .talk{
+	font-size:15px;
+	color: rgba(0,0,0,0.6); 
+	
+
+} 
+ 
+ 
+ .add-review ul li.R-two{
+	background-color:#f3f3f3;
+} 
+
+.add-review .R-two img{
+width:40%;
+	
+}
+
+

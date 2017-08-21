@@ -434,13 +434,96 @@ require "vendor/autoload.php";
 					</div>  
 					
 					
+					<?php//END OF ADD TRADESMAN?> 
+					
+					
+					
+					<?php// START OF REVIEWS ?> 
+					
+					
+							 <div class = "add-review">
+					<ul>
+					<li>
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Haastrup joke</p>  
+								<br/>
+								
+								<div class = "icon-box">
+								<a href="#"><i class = "icon fa-envelope"></i></a>
+								<a href= "#"><i class = "icon fa-commenting-o"></i></a>  
+								<a href="tel"><i class="icon fa-phone"></i></a>
+								</div> 
+								
+								<br/>
+								
+								<div class = "rating">
+								<i class="icon fa-star-o"></i>  
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								</div> 
+								
+								
+								<div class = "talk">
+								<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
+								<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Write a review</a>
+								
+								
+								</div> 
+								
+							<span class = " pull-left reviews">Reviews</span>					
+								
+			</div>
+			</div>
+			</section>  
+			</li> 
+			
+			<li class="R-two">
+					<section class = "">
+						<div class="row">
+							<div class="col-xs-2 center">
+								<img src="<?php echo load_image(""); ?>" alt="">
+							</div><?php //col 
+							?>
+							<div class="col-xs-8">
+								<p class="person-name">Haastrup joke</p>
+								<div class = "rating">
+								<i class="icon fa-star-o"></i>  
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								<i class="icon fa-star-o"></i> 
+								</div> 
+								
+								<span class = "story"> This tradesman is the best in town after i used him i was super excited!</span>
+									<br/>
+								<i class="icon fa-clock-o"></i> 
+							
+								<?php echo date("Y-m-d-")?>
+				
+			</div>
+			</div>
+			</section>
+			</li> 
+			
+			</ul> 
+			</div>
+			
 					
 					
 					
 					
 			
 				</div>
-			</div>
+			
+		
             
 			<?php //right side
 				require PARTS."_right.php";
