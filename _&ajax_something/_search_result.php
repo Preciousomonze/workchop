@@ -7,7 +7,7 @@
  * @contributors ..Haastrup Adejoke
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
- 
+ require "../_vars.php";
  require "../_parts/_functions.php";
  //call the main imbe that loads all my niggas.
  require "../vendor/autoload.php";
@@ -28,7 +28,7 @@
  if(empty($vendor_type)){
 	 ?>
 	 <div class="big-search">
-			<i class="icon fa-delete"></i>
+			<i class="icon fa-close"></i>
 			<p class="inscribed">Please select a type of tradesman</p>
 						
 	 </div>
@@ -38,7 +38,7 @@
 	 ?>
 	 
 	 <div class="big-search">
-			<i class="icon fa-delete"></i>
+			<i class="icon fa-close"></i>
 			<p class="inscribed">Please select a location</p>
 						
 	 </div>
@@ -83,7 +83,7 @@
 			 $t_story = $tradesman[5];
 			 
 			 //get tradesman-pishure
-			 $t_pishure = $site_url."mobile_app/vendor_pictures/."$t_id.".jpg";
+			 $t_pishure = $site_url."mobile_app/vendor_pictures/".$t_id.".jpg";
 			 
 				?>
 		 

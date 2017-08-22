@@ -19,6 +19,11 @@
 	<?php
 	 exit();
  }
+ ?>
+ 
+ <?php
+ 
+
  //get the request
 $url = $site_url."mobile_app/get_user_chat_list2.php?user_id=".$user."";
  $curl = new Curl();
@@ -26,7 +31,11 @@ $url = $site_url."mobile_app/get_user_chat_list2.php?user_id=".$user."";
  $result = $curl->get_auth($url);
  if($curl->get_error()){
 		 //no message
-		echo toast_note("An error occured, please try again later.",2); 
+		echo alert_note("An error occured, please try again later.",2); 
+		?>
+		
+		<a href="#open-message" onclick="showMessage(2)" title="view conversation with">bla</a>
+		<?php 
 		 exit();
  }
  else{
@@ -53,13 +62,20 @@ $url = $site_url."mobile_app/get_user_chat_list2.php?user_id=".$user."";
 			 $is_unread = "unread";
 			 $badge_no = "	<span class=\"wc-badge pull-right\">".$unread_no."</span>";
 		 }
+		 
+		 //switch between rows
+		 $even = $i % 2;
+		 $two_class = '';
+		 if($even == 1){
+			 $two_class = "two";
+		 }
 		 ?>
 		 <a href="#open-message" onclick="showMessage($t_id)" title="view conversation with <?php $t_name; ?>">
-		 <div class="message-box <?php echo $is_unread; ?>">
+		 <div class="message-box <?php echo $two_class." ".$is_unread; ?>">
 						<section class="message-body">
 							<div class="row">
 								<div class="col-xs-2 center">
-									<img src="<?php echo load_image($site_url."mobile_app/vendor_pictures/".$t_id.".jpg"); ?>" alt="<?php echo $t_name; ?>">
+									<img class="round" src="<?php echo load_image($site_url."mobile_app/vendor_pictures/".$t_id.".jpg"); ?>" alt="<?php echo $t_name; ?>">
 								</div><?php //col
 								?>
 								<div class="col-xs-10">

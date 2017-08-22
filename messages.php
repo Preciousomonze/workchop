@@ -46,25 +46,55 @@ require "vendor/autoload.php";
                 var _basic_click = $("a[href='#basic']");
                 var _advanced_click = $("a[href='#advanced']");
                     */?>
-					var request;
               $(document).ready(function(){
-			  
-           try{
+			try{
+				<?php /*
                request = new XMLHttpRequest();
                request.open('GET', "<?php echo AJAX_PART;?>_message_list.php", true);
                request.onreadystatechange = changed;
                request.send(null);
+			   */
+			   
+         //  $("#message-list-place").load('<?php echo AJAX_PART;? >_message_list.php');
+		  
+		   $toast_note_js = toast_note_js(".toast-note");
+		   echo ajax_js("#message-list-place","'".AJAX_PART."_message_list.php'",null,$toast_note_js);
+			?>
+     
            }
            catch(exception){
                alert(exception);
            }  
+		   
 			  }
 			  );
-       function changed(){
-           document.getElementById("center-place").innerHTML = request.responseText;
-           
-       }
-
+    <?php // echo toast_note_js(".toast-note"); ?>
+	  
+	  
+	
+    function showMessage(id){ 
+               
+           try{ 
+		   alert("bla");
+		   
+    	//alert("bla");
+		//$('#message-list-place').load(function(){
+		//setTimeout(remove, 1000);
+	//	remove();
+			//alert("b");
+		 $("#message-space").load('<?php echo AJAX_PART; ?>_messages.php?');
+		
+		//});
+               <?php
+        // $toast_note_js = toast_note_js(".toast-note");
+		   //echo ajax_js("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",null,"alert(\"fool\");");
+			 ?>
+			 
+          } 
+           catch(exception){ 
+               alert(exception); 
+           }   
+    } 
                 <?php
 
                         //profile edit part
@@ -87,13 +117,26 @@ require "vendor/autoload.php";
 				
 				
 				
-			<div id="center-place" class="col-md-6 center-body">
+			<div id="message-space" class="col-md-6 center-body">
 				<?php
 				/** This is where the center comes in for the message. **/
 				?>
 			<?php // messages 
 				?>
-				
+				        <div class="message-itself inside"> 
+        <div class = "head"> 
+          <p class = "write">   
+            <i class="icon fa-comments-o"></i>  
+            Messages 
+            </p> 
+                 </div> 
+                 <div class="initial center" style="min-height:220px;position:relative;"> 
+                  
+                 <div id="message-list-place"> 
+                  <?php loader(); ?> 
+                  </div> 
+                  </div> 
+        </div> 
 				
 				
 				
@@ -101,6 +144,37 @@ require "vendor/autoload.php";
 				<div class = "head"><p class = "write">	
 				<img style="width:10%;border-radius:100%;" src="<?php echo load_image("sample"); ?>" alt="">
 								 Tradesman</p></div>
+					
+					  <div class="message-body"> 
+          <section class="message left clearfix"> 
+ 
+            <div class="inner"> 
+            <p>bla bla bla</p> 
+            <section class="time"> 
+              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
+            </section> 
+            </div> 
+          </section> 
+           
+           
+          <section class="message right clearfix"> 
+            <div class="inner"> 
+            <p>bla bla bla</p> 
+            <section class="time"> 
+              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
+            </section> 
+            </div> 
+          </section> 
+           
+           
+          <section class="message right clearfix"> 
+            <div class="inner"> 
+            <p>bla bla bla</p> 
+            <section class="time"> 
+              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
+            </section> 
+            </div> 
+          </section> 
 					
 					<section class="message left clearfix">
 

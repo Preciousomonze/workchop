@@ -42,3 +42,5 @@ else{
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/main.css">
 	            <script type="text/javascript" src="<?php base_url("assets/js/jquery.js"); ?>"></script>
+	  
+		

@@ -31,32 +31,34 @@ $curl = new Curl();
                 var _basic_click = $("a[href='#basic']");
                 var _advanced_click = $("a[href='#advanced']");
                     */?>
-                function showBasic(){
-                    $(".advanced-show").hide('slow');
-                    $(".basic-show").show('slow');
-
-                    $("a[href='#advanced']").removeClass("active");
-                    $("a[href='#basic']").addClass("active");
-
-                }
-
-                function showAdvanced(){
-                    $(".basic-show").hide('slow');
-                    $(".advanced-show").show('slow');
-
-                    $("a[href='#basic']").removeClass("active");
-                    $("a[href='#advanced']").addClass("active");
-
-                }
-
-                <?php
-
-                        //profile edit part
-                        //when the edit profile is clicked
-
-                ?>
-
-
+                  var request; 
+           
+          $(document).on("submit","#search-vendor",function(event){ 
+            event.preventDefault(); 
+            searchVendor();
+          }); 
+           
+           
+           function searchVendor(){ 
+            
+           try{ 
+                
+               request = new XMLHttpRequest(); 
+               request.open('POST',"<?php echo AJAX_PART; ?>_search_result.php",true); 
+            request.onreadystatechange = changed; 
+             
+               request.send(null); 
+           } 
+           catch(exception){ 
+               alert("error"); 
+           } 
+            
+       } 
+       function changed(){ 
+           document.getElementById("search-result").innerHTML = request.responseText; 
+            
+       } 
+             
 
             </script>
 		</head>
@@ -75,7 +77,8 @@ $curl = new Curl();
 			<div class="col-md-6 center-body">
 				<div class="activity-stream inside">
 					<div class="head">
-						<form action="" method="post">
+					    <form id="search-vendor" method="post"> 
+         
 						
 						<div class="row">
 						<div class="col-xs-9">
@@ -105,10 +108,11 @@ $curl = new Curl();
 						</select>
 						</div><?php //column
 						?>
+						<input type="text">
 						</div> <?php //column
 						?>
 						<div class="col-xs-3">
-						<button type="submit" class="btn btn-feel" name="search"><i class="icon fa-search"></i></button>
+						<button type="submit" id="search-btn" class="btn btn-feel" name="search"><i class="icon fa-search"></i></button>
 						</div><?php //column
 						?>
 						</div> <?php //row 
