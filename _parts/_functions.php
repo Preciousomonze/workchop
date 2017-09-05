@@ -282,9 +282,9 @@
   } 
    
  /* 
-   * ajax_js 
+   * ajax_load 
    *  
-   * for displaying a note for a particular time inside the js, this function seems unecessary sef :( 
+   * for doing the ajax bla this function seems unecessary sef :( 
    * 
    *  
    * @var string element, the element to deal with, can be a class name,tag,id etc any valid one.   
@@ -297,7 +297,7 @@
    * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :( 
   */ 
    
-  function ajax_js($element,$url,$do_ajax_start = '',$do_ajax_end = '',$jstag = false) 
+  function ajax_load($element,$url,$do_ajax_start = '',$do_ajax_end = '',$jstag = false) 
   { 
     $element = trim($element); 
     $do_ajax_start = trim($do_ajax_start); 
@@ -315,22 +315,152 @@
 	 
     if(!empty($element)){ 
        
-        $result .= $start_tag."
-		$(document).on('".$state."',function(event){
-			$('".$element."').load(".$url.");
-		});";
+        $result .= $start_tag."";
+		//$(document).on('".$state."',function(event){
+		$result .="	$('".$element."').load(".$url.");";
+		//});";
+		if(!(empty($do_ajax_start) || $do_ajax_start == null)){
+		$result .= ajax_load_start($do_ajax_start);
+		}
+		
+		if(!(empty($do_ajax_end) || $do_ajax_end == null)){
+		$result .= ajax_load_end($do_ajax_end);
+		}
+		$result .="
+         ".$end_tag."";
+    } 
+    return $result; 
+   
+  } 
+
+
+ 
+/* 
+   * ajax_load_start 
+   *  
+   * for doing the ajax bla that triggers when an ajax load has started this function seems unecessary sef :( 
+   * 
+   *  
+   * @var string do_ajax_start(optional), what to do when the ajax starts, default is "".
+   * @returns string 
+   * @author precious omonze 
+   * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :( 
+  */ 
+   
+  function ajax_load_start($do_ajax_start = '') 
+  { 
+    $do_ajax_start = trim($do_ajax_start); 
+    	$result = ''; 
+   
 		if(!(empty($do_ajax_start) || $do_ajax_start == null)){
 		$result .= "
 		$(document).ajaxStart(function(){
 			".$do_ajax_start."
 		});";
-		
 		}
+	 
+    return $result; 
+   
+  } 
+  
+
+ 
+  
+/* 
+   * ajax_load_end 
+   *  
+   * for doing the ajax bla that triggers when an ajax load is complete this function seems unecessary sef :( 
+   * 
+   *  
+   * @var string do_ajax_end(optional), what to do when the ajax finishes, default is "".
+   * @returns string 
+   * @author precious omonze 
+   * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :( 
+  */ 
+   
+  function ajax_load_end($do_ajax_end = '') 
+  { 
+    $do_ajax_end = trim($do_ajax_end); 
+    	$result = ''; 
+   
 		if(!(empty($do_ajax_end) || $do_ajax_end == null)){
 		$result .= "
 		$(document).ajaxComplete(function(){
 			".$do_ajax_end."
 		});";
+		}
+	 
+    return $result; 
+   
+  } 
+  
+
+
+  
+
+ /* 
+   * ajax_send
+   *  
+   * for sending a form using post or get with the ajax method
+   * 
+   *  
+   * @var string element, the element to deal with, can be a class name,tag,id etc any valid one.   
+   * @var string url, the url to be submitted to.   
+   * @var string method, post or get method.   
+   * @var string data_stuff, the data to send, the normal ajax data pattern. e.g{id1: $('#id1').val()}, only thing is you dont need to put the curly bracket.   
+   * @var string do_success, what to execute on success, a normal jquery stuff should be put inside here.   
+   * @var string data_type, what to return, JSON or normal html, default is "html".   
+   * @var string do_ajax_start(optional), what to do when the ajax starts or is in process, default is "".   
+   * @var string do_ajax_end(optional), what to do when the ajax finishes, default is "".
+   * @var bool jstag(optional), if it should be inside or not, default is false.   
+   * @returns string 
+   * @author precious omonze 
+   * @contributors ...add your names here, seperate with commas, please oh, only add if you edit this code, some people are just putting names here, like they know what the function does :( 
+  */ 
+   
+  function ajax_send($element,$url,$method,$data_stuff,$do_success,$data_type = 'html',$do_ajax_start = '',$do_ajax_end = '',$jstag = false) 
+  { 
+    $element = trim($element); 
+    $do_ajax_start = trim($do_ajax_start); 
+    $do_ajax_end = trim($do_ajax_end); 
+     $state = "ready";
+	 $method = trim($method);
+	 $do_success = trim($do_success);
+	 $data_type = trim($data_type);
+	 $data_stuff = trim($data_stuff);
+	 
+		$result = ''; 
+     
+	 $start_tag = '';
+	 $end_tag = '';
+    if($jstag == true){ 
+      $start_tag = "<script type=\"text/javascript\">"; 
+      $end_tag = "</script>"; 
+    } 
+     
+	 
+    if(!empty($element)){ 
+       
+        $result .= $start_tag."";
+		
+		$result .="	
+		$.ajax({
+			type: \"".$method."\", 
+			data: {".$data_stuff."},//$(this).serialize(),
+			dataType:\"".$data_type."\",
+			url: ".$url.",
+			success: function(response){
+				alert(response);
+			".$do_success."	
+		}
+		});
+		";
+		if(!(empty($do_ajax_start) || $do_ajax_start == null)){
+		$result .= ajax_load_start($do_ajax_start);
+		
+		}
+		if(!(empty($do_ajax_end) || $do_ajax_end == null)){
+		$result .= ajax_load_end($do_ajax_end);
 		}
 		$result .="
          ".$end_tag."";
@@ -372,14 +502,14 @@
        
        
         $result = "<div class=\"blanket center\"> 
-                    <i class=\"icon fa-".$icon." ".$spin." fa-2x\"></i> 
+                    <i class=\"fa fa-".$icon." ".$spin." fa-2x\"></i> 
                     ".$writing." 
                   </div> 
                  "; 
        
          
      
-    echo $result; 
+    return $result; 
    
   } 
    
@@ -398,6 +528,7 @@
    
   function tradesman_info($id) 
   { 
+  global $delimiter;
  global $site_url;
     $id = trim($id); 
     $curl = new Curl(); 
@@ -511,13 +642,13 @@
   global $user;
   global $site_url;
     $id = trim($id); 
-    $result = 0; 
+    $result = false; 
     //curl 
     $curl = new Curl(); 
      
     $url = trim($curl->get_auth($site_url."mobile_app/is_my_vendor.php?vendor_id=".$id."&user_id=".$user)); 
     if(!$curl->get_error()){ 
-        $result = (int)$url; 
+        $result = $url; 
     } 
     return $result; 
   } 
@@ -540,17 +671,17 @@
     $id = trim($id); 
     $result = ''; 
      
-    if(is_user_tradesman($id)){ 
+    if(is_user_tradesman($id) == "true"){ 
       //the user has already been added 
-      $result = "<p class=\"btn-added-statement\"> 
-      <i class=\"icon fa-mark\"></i> Added 
+      $result = "<p class=\"added-btn-statement\" title=\"Already on your tradesman list.\"> 
+      <i class=\"icon fa-check\"></i> Added 
      </p>"; 
       
     } 
     else{ 
-      $result = " 
-          <a href=\"#add\" onclick=\"add_to_tradesman(".$id.")\" class=\"btn btn-feel\"><i class=\"icon fa-plus\"></i>Add</a>"; 
-    } 
+      //$result = "<a href=\"#add\" onclick=\"add_to_tradesman(".$id.")\" class=\"btn btn-feel\"><i class=\"icon fa-plus\"></i>Add</a>"; 
+	$result = "<a href=\"#add-tradesman\" class=\"btn sleek-btn\" onclick=\"addTradesman('".$id."')\"><i class=\"icon fa-plus\"></i>Add</a>";
+	} 
      
     return $result; 
   } 
@@ -606,15 +737,15 @@
   function show_rating($number) 
   { 
     $number = trim($number); 
-    $number = (int)$number; 
-    $result = ''; 
+    $number = (double)$number; 
+    $result = "<span title=\"".$number." out of 5\">"; 
      
     //maximum rating is 5,so show five, 
           //but now determine by showing the rating level, hmm,sounds complex. :( 
-          for($r =0; $r < 5; $r++){ 
+          for($r =0; $r < 5.0; $r++){ 
             //only colour if r is less than the rate 
             $rr = $r + 1; 
-            if($r < $number){//paint the star 
+            if($rr <= $number){//paint the star 
               $result .= "<i class=\"icon fa-star\"></i> "; 
             } 
             else{//empty star 
@@ -622,7 +753,8 @@
               $result .= "<i class=\"icon fa-star-o\"></i>";  
              
             } 
-          } 
+          }
+			$result .= "</span>";
            
     return $result; 
   } 

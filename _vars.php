@@ -49,7 +49,7 @@ define('USER_AREA','users_lounge/');
 define('PARTS','_parts/');
 define('AJAX_PART','_&ajax_something/');
 
- $site_url = "http://www.rkchopapp.com/";
+ $site_url = "http://workchop.ng/";
  $delimiter = "--";
  $tradesman_details_split = "----";
  $tradesman_split = "==========";

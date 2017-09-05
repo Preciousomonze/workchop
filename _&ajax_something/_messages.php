@@ -15,18 +15,16 @@
   $session = new Session();
  if($session->check_session_basically($user) == false){
 	// header("location:login.php");
-	?>
-	<script type="text/javascript">alert("Sorry, an unknown error occured, please try again or reload the page.");</script>
-	<?php
+	echo toast_note("Sorry, an unknown error occured, please try again or reload the page.",2);
+	
 	 exit();
  }
  ?>
  
-	<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
- 
+
  <?php
  //get the request
- $vendor_id = '55c49998a0f1df61322b9e831586c4c8';//trim($_GET["tradesman"]);
+ $vendor_id = trim($_GET["tradesman"]);
  //$message = trim($_POST["message"]);
  $url = $site_url."mobile_app/get_user_chats.php?vendor_id=".$vendor_id."&user_id=".$user."";
   
@@ -36,12 +34,37 @@
  $result = trim(strtolower($curl->get_auth($url)));
  //var_dump($result);
  //check if theres an error
- if(!($curl->get_error() || $result == "false")){
+ if($curl->get_error() || $result == "false"){
 	 echo toast_note("Could not resolve host",2);
+	 //send an error to the js, so that the initial page is reloaded
+	 ?>
+	 	        <div class="message-itself inside"> 
+        <div class = "head"> 
+          <p class = "write">   
+            <i class="icon fa-comments-o"></i>  
+            Messages 
+            </p> 
+                 </div> 
+                 <div class="initial center" style="min-height:220px;position:relative;"> 
+                  
+                 <div id="message-list-place"> 
+                  <?php loader(); ?> 
+                  </div> 
+                  </div> 
+        </div>
+	 <script type="text/javascript">
+	 <?php
+	 echo ajax_load("#message-list-place","'".AJAX_PART."_message_list.php'");
+			?>
+	 </script>
+	 <?php
+	 
+	 exit();
  }
  else{
 	 //get the list of messages.
 	 $messages = explode('------',$result);
+	 $messages = array_filter($messages);
 	 ///now loop through the result to get necessary info
 	 if(count($messages) < 1){
 		 //display no messages
@@ -55,12 +78,17 @@
 		
 			<div class="message-itself inside">
 		    
-				<div class = "head"><p class = "write">	
+				<div class = "head clearfix">
+				<p class = "write">	
 				<img style="width:10%;" class="round" src="<?php echo load_image($site_url."mobile_app/vendor_pictures/".$vendor_id.".jpg"); ?>" alt="<?php echo tradesman_names($vendor_id); ?>">
-								 <?php echo tradesman_names($vendor_id); ?></p></div>
+				<?php echo tradesman_names($vendor_id); ?></p>
+				
+				<a href="#messages" style="float:right;margin-top:-30px;" class="btn-feel"><i class="icon fa-step-backward"></i> Back</a>
+				</div>
 					<div class="message-body">
 		
 		<?php
+		//var_dump($messages);
 	 for($i = 0; $i < count($messages); $i++){//reverse this something backwards, so as to get the latest at the top
 		 //from what i noticed, you could get empty results, i don't know why he won't solve that :(
 		 if(!empty(trim($messages[$i]))){
@@ -103,8 +131,11 @@
 				<div class="new-message">
 					<form id="send-msg-form">
 						<textarea name="new_message" class="form-control" placeholder="Send a new message to name"></textarea>
-						<button type="button" id="send-msg-btn" class="btn-feel btn form-control"><i class="colour-blue icon fa-send"></i> Send</button>
+						<button type="submit" id="send-msg-btn" class="btn-feel btn form-control"><i class="colour-blue icon fa-send"></i> Send</button>
 					</form>
+					<?php 
+					echo ajax_send("#search-result","'".AJAX_PART."_send_msg.php'","post",'');
+					?>
 				</div>
 					</div><?php // messages 
 			

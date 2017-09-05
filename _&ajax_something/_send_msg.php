@@ -14,11 +14,10 @@
   $session = new Session();
  if($session->check_session_basically($user) == false){
 	// header("location:login.php");
-	?>
-	<script type="text/javascript">alert("Sorry, an unknown error occured, please try again or reload the page.");</script>
-	<?php
+	toast_note("Sorry, an unknown error occured, please try again or reload the page.",2);
 	 exit();
  }
+ 
  //get the request
  $vendor_id = '55c49998a0f1df61322b9e831586c4c8';//trim($_POST["vendor_id"]);
  $message = trim($_POST["message"]);
@@ -26,7 +25,7 @@
   
  if(empty($message)){
 	 //show an error
-	 echo "Please type something in the message box";
+	 echo toast_note("Please type something in the message box",2);
 	 exit();
  }
  $curl = new Curl();
@@ -35,9 +34,13 @@
  //var_dump($result);
  //check if theres an error
  if(!$curl->get_error()){
-	 echo "Message sent";
+	 echo toast_note("Message sent",1);
 	 }
 	 else{
-		 echo "An error occured, please try again later.";
+		 echo toast_note("An error occured, please try again later.",2);
 	 }
 ?>
+
+
+
+

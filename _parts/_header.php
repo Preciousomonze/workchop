@@ -43,4 +43,31 @@ else{
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/main.css">
 	            <script type="text/javascript" src="<?php base_url("assets/js/jquery.js"); ?>"></script>
 	  
+	  <script type="text/javascript">
+	  <?php //for poping out the message box
+	  ?>
+	  function showMessageSide(id){
+			   id = id.toString();  
+  <?php
+        $toast_note_js = toast_note_js(".toast-note");
+		
+		   $start_ajax = "
+			$('#message-space').append('".loader()."');";
+		   echo ajax_load("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",$start_ajax,$toast_note_js);
+			 ?>
+	  }
+	  <?php //for adding the danger stuff for some text 
+	  ?>
+	  function showDanger(element){
+		  element = element.toString();
+		  $(document).on("ready",function(){
+			  alert("bla");
+			$(element).addClass("left-out");  
+		  });
+		  
+	  }
+	  
+	  </script>
+		
+		
 		

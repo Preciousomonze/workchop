@@ -24,10 +24,6 @@ require "vendor/autoload.php";
  }
  
  ?>
- 
- 
-
-
 <!DOCTYPE html>
 	<html>
 		<head>
@@ -58,7 +54,7 @@ require "vendor/autoload.php";
          //  $("#message-list-place").load('<?php echo AJAX_PART;? >_message_list.php');
 		  
 		   $toast_note_js = toast_note_js(".toast-note");
-		   echo ajax_js("#message-list-place","'".AJAX_PART."_message_list.php'",null,$toast_note_js);
+		   echo ajax_load("#message-list-place","'".AJAX_PART."_message_list.php'",null,$toast_note_js);
 			?>
      
            }
@@ -73,23 +69,16 @@ require "vendor/autoload.php";
 	  
 	
     function showMessage(id){ 
-               
+             id = id.toString();  
            try{ 
-		   alert("bla");
-		   
-    	//alert("bla");
-		//$('#message-list-place').load(function(){
-		//setTimeout(remove, 1000);
-	//	remove();
-			//alert("b");
-		 $("#message-space").load('<?php echo AJAX_PART; ?>_messages.php?');
+  <?php
+        $toast_note_js = toast_note_js(".toast-note");
 		
-		//});
-               <?php
-        // $toast_note_js = toast_note_js(".toast-note");
-		   //echo ajax_js("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",null,"alert(\"fool\");");
+		   $start_ajax = "
+			$('#message-space').append('".loader()."');";
+		   echo ajax_load("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",$start_ajax,$toast_note_js);
 			 ?>
-			 
+		   
           } 
            catch(exception){ 
                alert(exception); 
@@ -123,7 +112,7 @@ require "vendor/autoload.php";
 				?>
 			<?php // messages 
 				?>
-				        <div class="message-itself inside"> 
+		<div class="messages inside"> 
         <div class = "head"> 
           <p class = "write">   
             <i class="icon fa-comments-o"></i>  
@@ -133,77 +122,11 @@ require "vendor/autoload.php";
                  <div class="initial center" style="min-height:220px;position:relative;"> 
                   
                  <div id="message-list-place"> 
-                  <?php loader(); ?> 
+                  <?php echo loader(); ?> 
                   </div> 
                   </div> 
         </div> 
-				
-				
-				
-				<div class="message-itself inside">
-				<div class = "head"><p class = "write">	
-				<img style="width:10%;border-radius:100%;" src="<?php echo load_image("sample"); ?>" alt="">
-								 Tradesman</p></div>
-					
-					  <div class="message-body"> 
-          <section class="message left clearfix"> 
- 
-            <div class="inner"> 
-            <p>bla bla bla</p> 
-            <section class="time"> 
-              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
-            </section> 
-            </div> 
-          </section> 
-           
-           
-          <section class="message right clearfix"> 
-            <div class="inner"> 
-            <p>bla bla bla</p> 
-            <section class="time"> 
-              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
-            </section> 
-            </div> 
-          </section> 
-           
-           
-          <section class="message right clearfix"> 
-            <div class="inner"> 
-            <p>bla bla bla</p> 
-            <section class="time"> 
-              <i class="icon fa-clock-o"></i> 2017/45/34 45:15 
-            </section> 
-            </div> 
-          </section> 
-					
-					<section class="message left clearfix">
-
-						<div class="inner">
-						<p>bla bla bla</p>
-						<section class="time">
-							<i class="icon fa-clock-o"></i> 2017/45/34 45:15
-						</section>
-						</div>
-					</section>
-					<section class="message right clearfix">
-						<div class="inner">
-						<p>bla bla bla</p>
-						<section class="time">
-							<i class="icon fa-clock-o"></i> 2017/45/34 45:15
-						</section>
-						</div>
-					</section>
-				</div><?php // messages 
 			
-				?>
-				<div class="new-message">
-					<form>
-						<textarea name="new_message" class="form-control" placeholder="Send a new message to name"></textarea>
-						<button type="button" class="btn-feel btn form-control"><i class="colour-blue icon fa-send"></i></button>
-					</form>
-				</div>
-				
-				</div>
 			</div>
             
 			<?php //right side
@@ -216,8 +139,9 @@ require "vendor/autoload.php";
 			</div>
 
 <script type="text/javascript">
-    $("#profile-page").addClass("active");
-
+	$(document).on("ready",function(){
+    $("#message-page").addClass("active");
+	});
 </script>
         <?php //footer
         require base_path("_parts/_footer.php");

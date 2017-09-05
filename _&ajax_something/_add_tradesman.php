@@ -7,7 +7,7 @@
  * @contributors ..Haastrup Adejoke
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
- 
+ require "../_vars.php";
  require "../_parts/_functions.php";
  //call the main imbe that loads all my niggas.
  require "../vendor/autoload.php";
@@ -20,7 +20,7 @@
 	 exit();
  }
  //get the request
- $vendor_id = trim($_GET["vendor_id"]);
+ $vendor_id = trim($_GET["tradesman"]);
  $url = $site_url."mobile_app/add_to_my_vendors.php?vendor_id=".$vendor_id."&user_id=".$user;
  
  
@@ -34,15 +34,17 @@
 	 if($result == "done"){
 		 ?>
 		 
-		 <p class="btn-added-statement">
-			<i class="icon fa-mark"></i> Added
+		 <p class="added-btn-statement">
+			<i class="icon fa-check"></i> Added
 		 </p>
 		 <?php
 	 }
  }
  else{
 	 //i'm tired, do nothing
-	 
+	 echo toast_note("Could not add tradesmen, try again.",2);
+	 //show the button again.
+	 echo show_add_btn($vendor_id);
  }
 
 ?>

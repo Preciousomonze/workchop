@@ -34,7 +34,7 @@
 	 if($result == "done"){
 		 ?>
 		 
-		 <p class="btn-added-statement">
+		 <p class="added-btn-statement">
 			<i class="icon fa-mark"></i> Added
 		 </p>
 		 <?php
@@ -42,7 +42,9 @@
  }
  else{
 	 //i'm tired, do nothing
-	 
+	 echo toast_note("Couldn't add to your tradesman list, try again!",2);
+	 //show the button again
+	 echo show_add_btn($vendor_id);
  }
 
 ?>
