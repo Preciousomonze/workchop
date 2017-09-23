@@ -2,7 +2,8 @@
 require "_vars.php";
 require "vendor/autoload.php";
 unset($_SESSION["user"]);
-header("location:/");
+unset($_SESSION["duplicate"]);
+header("location:".$site_url);
 /*
  $session = new Session();
  if($session->check_session_basically($_SESSION["user"])){

@@ -18,7 +18,7 @@ require "vendor/autoload.php";
 
  $session = new Session();
  if($session->check_session_basically($user) == false){
-	 //header("location:login.php");
+	 header("location:login.php");
 	 //exit();
  }
  
@@ -38,54 +38,35 @@ require "vendor/autoload.php";
 
 
             <script type="text/javascript">
-                <?php ////LET'S DO THE JS STUFF HERE ?>
-                <?php /*
-                var _basic_part= $(".basic-show");
-                var _advanced_part= $(".advanced-show");
-                var _basic_click = $("a[href='#basic']");
-                var _advanced_click = $("a[href='#advanced']");
-                    */?>
-                function showBasic(){
-                    $(".advanced-show").hide('slow');
-                    $(".basic-show").show('slow');
-
-                    $("a[href='#advanced']").removeClass("active");
-                    $("a[href='#basic']").addClass("active");
-
-                }
-
-                function showAdvanced(){
-                    $(".basic-show").hide('slow');
-                    $(".advanced-show").show('slow');
-
-                    $("a[href='#basic']").removeClass("active");
-                    $("a[href='#advanced']").addClass("active");
-
-                }
-
-                <?php
-
-                        //profile edit part
-                        //when the edit profile is clicked
-
-                ?>
-                 var profile_edit_status = 0;
-
-                    $("#profile-edit").click(function(){
-
-                        //if(profile_edit_status == 0){
-                        $(".whole-body").hide();
-                        //}
-
-                        //else{
-                        $("#profile input").removeAttr("readonly");
-                        //}
-
-                    });
-
-
-
-
+ $(document).ready(function(){
+		   	  <?php
+		   echo ajax_load("#tradesman-stuff ul","'".AJAX_PART."_tradesman_type.php'",null,null);
+			?>
+    	  });
+			function showTradesmanType(event){
+				event.preventDefault();
+			$(document).off('ajaxStart.general');
+		  $(document).off('ajaxStart.sendmsg');
+		  $(document).off('ajaxComplete.sendmsg');
+			<?php
+			$p_start = "$('#trade-loader').addClass('make-relative').append('".loader("","loading...","circle-o-notch")."');";//"$('#message-space > .blanket').remove();";
+		   $ajax_end = "$('div').remove('.blanket');";//"$('#message-space > .blanket').remove();";
+		   ?>
+		   $('.tradesman-body').html('<div id="trade-loader"><div class = "head"><p class = "write"><i class = "icon fa-group"></i> Tradesmen</p></div><div class = "body-part"><div id="tradesman-stuff" class = "trade-inside"><ul class="trades-details wow fadeInUp animated"></ul></div></div></div>');
+		<?php
+		   echo ajax_load("#tradesman-stuff ul","'".AJAX_PART."_tradesman_type.php'",$p_start,$ajax_end,"profiletradesmen");
+			?>
+        }
+		function showTradesmen(id){
+			id = id.toString();	
+			$(document).off('ajaxComplete.general');
+		  $(document).off('ajaxStart.sendmsg');
+		  $(document).off('ajaxComplete.sendmsg');
+			<?php
+			$ajax_start = "$('#trade-loader').addClass('make-relative').append('".loader("","loading...","circle-o-notch")."');";//"$('#message-space > .blanket').remove();";
+		   echo ajax_load("#trade-loader","'".AJAX_PART."_tradesman_list.php?tradesman_type='+id",$ajax_start,$ajax_end,"profiletradesmen");
+			?>
+		}
             </script>
 		</head>
 		<body>
@@ -115,416 +96,62 @@ require "vendor/autoload.php";
 					<div class = "head"><p class = "write"><i class = "icon fa-user"></i> Profile</p></div>
 					<div class = "body-part"> 
 						
-						<form> 
+						<form class="dont-edit"> 
 						
 						<?php //Putting this blah in a boostrap so they can split?>
 						<div class = "row" >
-						<div class = "col-sm-6">
-						First Name: <br/> 
-						<input type = "text" name = "firstname" class="form-control" value = "<?php echo $firstname; ?>"><br/> 
+						<div class = "col-sm-6 wow fadeInUp">
+						<label>First Name </label> 
+						<input type = "text" name = "firstname" class="form-control" value = "<?php echo $firstname; ?>" readonly><br/> 
 					</div>
 					
-					<div class = "col-sm-6">
-						Last Name: <br/>
-						<input type = "text" name = "lastname" class="form-control" value = "<?php echo $surname; ?>" ><br/>  
+					<div class = "col-sm-6 wow fadeInUp">
+						<label>Last Name</label>
+						<input type = "text" name = "lastname" class="form-control" value = "<?php echo $surname; ?>" readonly><br/>  
 						</div>
 						
 						
-					<div class = "col-sm-6">
-						Email: <br/>
-						<input type = "email" name = "email" class="form-control" value = "<?php echo $email; ?>"><br/>  
+					<div class = "col-sm-6 wow fadeInUp">
+						<label>Email</label>
+						<input type = "email" name = "email" class="form-control" value = "<?php echo $email; ?>" readonly><br/>  
 						</div>
 						
-					<div class = "col-sm-6">
-						Phone: <br/>
-						<input type = "tel" name = "phone" class="form-control"  value = "<?php echo $phone; ?>"><br/>  
+					<div class = "col-sm-6 wow fadeInUp">
+						<label>Phone</label>
+						<input type = "tel" name = "phone" class="form-control"  value = "<?php echo $phone; ?>" readonly><br/>  
 						</div>
 						
-					<div class = "col-sm-6">
-						Location:<br/>
-						<input type = "text" name = "location" value = "<?php //echo $location; ?>">
+					<div class = "col-sm-offset-3 col-sm-6 wow fadeInUp">
+						<label>Location</label>
+						<input type = "text" class="form-control" name = "location" value = "<?php echo $location; ?>" readonly>
 						</div>
-						
-						
 						</div>
-						
-						
-						
 						</form>
-
-
 
 					</div> 
 					<?php // END OF PROFILE TAG!?> 
-					
-			
-					
 				</div> 
 				
-				
 				<?php //START OF TRADESMAN TAG!?>  
-					<div class = "tradesman-body inside"> 
-					<div class = "head"><p class = "write"><i class = "icon fa-group"></i> Tradesman</p></div>
+				<div id="trades"></div>
+					<div class = "tradesman-body inside">
+						<div id="trade-loader">
+					<div class = "head"><p class = "write"><i class = "icon fa-group"></i> Tradesmen</p></div>
 					<div class = "body-part"> 
 				
-					<?php //Oya oh lets kill this bish!?>
-					
-					<div class = "trade-inside">
-					<ul>
-					<li><a href = "#">
-					
-					<i class = "icon fa-arrow-right"></i>Master blah 
-					<i class = " pull-right icon fa-angle-right"></i>
-					<span class ="pull-right wc-badge">3</span>
-					</a></li> 
-					
-					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
-					<i class = " pull-right icon fa-angle-right"></i> 
-					<span class ="pull-right wc-badge">3</span>
-					</a></li> 
-					
-					
-					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
-					<i class = " pull-right icon fa-angle-right"></i>
-					<span class ="pull-right wc-badge">3</span>
-					</a></li>
-					
-					
-					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
-					<i class = " pull-right icon fa-angle-right"></i>
-					<span class ="pull-right wc-badge">3</span>
-					</a></li> 
-					
-					
-					<li><a href = "#"><i class = "icon fa-arrow-right"></i>Master blah
-					<i class = " pull-right icon fa-angle-right"></i>
-					<span class ="pull-right wc-badge">3</span>
-					</a></li>
-					
+					<div id="tradesman-stuff" class = "trade-inside">
+					<ul class="trades-details wow fadeInDown">
+					<?php echo loader("","working...","gear"); ?>
 					</ul>
-					
 					
 					</div> 
 					<?php //END OF THAT BISH INSIDE TRADESMAN ! we are moving on to greater things?> 
 					
-				
 					</div>
-					</div> 
-				 
-				 <?php// END OF TRADESMAN TAG!?>
-				 
-				 
-				 <?php //TIME TO KILL THIS BISH STORY FOR THE gods AM A PERSONAL VENDOR!?> 
-				 
-				 
-				 <div class = "trade-info">
-					<ul>
-					<li>
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Omonze Prec</p>
-								<p class="person-location"><i class="icon fa-map-marker"></i> 
-								Ajah
-								</p>
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-							<a href="tel"><i class="icon fa-phone"></i></a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
 					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					<li class="two">
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Omonze Prec</p>
-								<p class="person-location"><i class="icon fa-map-marker"></i> 
-								Ajah
-								</p>
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-							<a href="tel"><i class="icon fa-phone"></i></a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
-					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					<li>
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Omonze Prec</p>
-								<p class="person-location"><i class="icon fa-map-marker"></i> 
-								Ajah
-								</p>
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-							<a href="tel"><i class="icon fa-phone"></i></a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a>
-					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					
-					
-					</ul>
-					
-					
-					</div>  
-					
-					<?php//END OF STORY FOR THE gods TRADESMAN INFO!?> 
-
-					
-					
-					<?php// START OF ADD TRADESMAN LETS FINISH THIS BISH!?> 
-					
-					
-					
-				 <div class = "add-trade">
-					<ul>
-					<li>
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Haastrup joke</p>
-								<div class = "rating">
-								<i class="icon fa-star-o"></i>  
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								</div>
-								
-								<span class = "used-by">Used by 2 contacts</span>
-								
-							
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
-					<a href="tel"><i class="icon fa-phone"></i></a>
-					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					<li class="two">
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Haastrup joke</p>
-								<div class = "rating">
-								<i class="icon fa-star-o"></i>  
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								</div>
-								
-								<span class = "used-by">Used by 2 contacts</span>
-								
-								
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
-					<a href="tel"><i class="icon fa-phone"></i></a>
-
-					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					<li>
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Haastrup joke</p> 
-								<div class = "rating">
-								<i class="icon fa-star-o"></i>  
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								</div>
-								<span class = "used-by">Used by 2 contacts</span>
-								
-								</p>
-							</div><?php //col 
-							?>
-							<div class="col-xs-2">
-							
-					 <div class="info-box center">
-					<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
-					<a href="#"><i class = "icon fa-envelope"></i></a>
-					<a href= "#"><i class = "icon fa-commenting-o"></i></a> 
-					<a href="tel"><i class="icon fa-phone"></i></a>
-
-					</div>
-							</div><?php //col 
-							?>
-						</div>
-					</section>
-					
-				</li> 
-					
-					
-					</ul>
-					
-					
-					</div>  
-					
-					
-					<?php//END OF ADD TRADESMAN?> 
-					
-					
-					
-					<?php// START OF REVIEWS ?> 
-					
-					
-							 <div class = "add-review">
-					<ul>
-					<li>
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Haastrup joke</p>  
-								<br/>
-								
-								<div class = "icon-box">
-								<a href="#"><i class = "icon fa-envelope"></i></a>
-								<a href= "#"><i class = "icon fa-commenting-o"></i></a>  
-								<a href="tel"><i class="icon fa-phone"></i></a>
-								</div> 
-								
-								<br/>
-								
-								<div class = "rating">
-								<i class="icon fa-star-o"></i>  
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								</div> 
-								
-								
-								<div class = "talk">
-								<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Add</a>
-								<a href="#"><i class="icon fa-plus-circle btn sleek-btn"></i>Write a review</a>
-								
-								
-								</div> 
-								
-							<span class = " pull-left reviews">Reviews</span>					
-								
-			</div>
-			</div>
-			</section>  
-			</li> 
-			
-			<li class="R-two">
-					<section class = "">
-						<div class="row">
-							<div class="col-xs-2 center">
-								<img src="<?php echo load_image(""); ?>" alt="">
-							</div><?php //col 
-							?>
-							<div class="col-xs-8">
-								<p class="person-name">Haastrup joke</p>
-								<div class = "rating">
-								<i class="icon fa-star-o"></i>  
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								<i class="icon fa-star-o"></i> 
-								</div> 
-								
-								<span class = "story"> This tradesman is the best in town after i used him i was super excited!</span>
-									<br/>
-								<i class="icon fa-clock-o"></i> 
-							
-								<?php echo date("Y-m-d-")?>
-				
-			</div>
-			</div>
-			</section>
-			</li> 
-			
-			</ul> 
-			</div>
-			
-					
-					
-					
-					
-			
+				</div>
 				</div>
 			
-		
-            
 			<?php //right side
 				require PARTS."_right.php";
 			?>
@@ -541,4 +168,3 @@ require "vendor/autoload.php";
         <?php //footer
         require base_path("_parts/_footer.php");
         ?>
- 

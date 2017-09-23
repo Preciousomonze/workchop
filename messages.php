@@ -1,25 +1,19 @@
 <?php session_start();
-
-/** j: Finally, i get the chance to comment first :)
-* p: Yup imbes are always allowed to do some things first ;)
-This is the profile page that shows imbe customers
+/**
+This is the message page
 DON'T EDIT THIS CODE IF YOU DON'T KNOW WHAT YOU ARE DOING.
  * if you know what you're doing, add your name to the contributors list
  * 
  * @author Precious Omonzejele
- * @contributors Precious Omonzejele
+ * @contributors ...
  * I have to acknowledge myself oh, so that one day, my code will hit the right set of people
  */
-
- require_once "_vars.php";
+require_once "_vars.php";
 require "_parts/_functions.php";
-
 require "vendor/autoload.php";
-//$curl = new Curl();
-
- $session = new Session();
+$session = new Session();
  if($session->check_session_basically($user) == false){
-	 header("location:login.php");
+header("location:login.php");
 	 exit();
  }
  
@@ -36,61 +30,44 @@ require "vendor/autoload.php";
 
             <script type="text/javascript">
                 <?php ////LET'S DO THE JS STUFF HERE ?>
-                <?php /*
-                var _basic_part= $(".basic-show");
-                var _advanced_part= $(".advanced-show");
-                var _basic_click = $("a[href='#basic']");
-                var _advanced_click = $("a[href='#advanced']");
-                    */?>
-              $(document).ready(function(){
-			try{
+       $(document).ready(function(){
+		   	  <?php
+		   $toast_note_js = toast_note_js(".toast-note");
+		   echo ajax_load("#message-list-place","'".AJAX_PART."_message_list.php'",null,$toast_note_js);
+			?>
+    	  });
+			function showMessageList(){
 				<?php /*
                request = new XMLHttpRequest();
                request.open('GET', "<?php echo AJAX_PART;?>_message_list.php", true);
                request.onreadystatechange = changed;
                request.send(null);
 			   */
-			   
-         //  $("#message-list-place").load('<?php echo AJAX_PART;? >_message_list.php');
-		  
-		   $toast_note_js = toast_note_js(".toast-note");
-		   echo ajax_load("#message-list-place","'".AJAX_PART."_message_list.php'",null,$toast_note_js);
+		   $ajax_end = "";//"$('#message-space > .blanket').remove();";
+		   ?>
+		
+		   $('#message-space').html('<div class="messages inside"><div class = "head"><p class = "write"><i class="icon fa-comments-o"></i> Messages</p></div><div class="initial center"><div id="message-list-place"><?php echo loader(); ?></div></div></div>');
+		
+		<?php
+		   //$start_ajax = "$('#message-space').append('".loader()."');";
+			$start_ajax = "";
+		   echo ajax_load("#message-list-place","'".AJAX_PART."_message_list.php'",null,$ajax_end);
 			?>
      
            }
-           catch(exception){
-               alert(exception);
-           }  
-		   
-			  }
-			  );
-    <?php // echo toast_note_js(".toast-note"); ?>
-	  
-	  
-	
+    
     function showMessage(id){ 
-             id = id.toString();  
-           try{ 
+             id = id.toString();   
   <?php
         $toast_note_js = toast_note_js(".toast-note");
-		
-		   $start_ajax = "
-			$('#message-space').append('".loader()."');";
-		   echo ajax_load("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",$start_ajax,$toast_note_js);
+		$s_m_end = $toast_note_js."$('div').remove('.blanket');
+		$('.message-body').scrollTop($('.message-body')[0].scrollHeight - $('.message-body')[0].clientHeight);";
+		//$('.message-body').animate({scrollTop: $('.message-body')[0].scrollHeight - $('.message-body')[0].clientHeight}, 1000);
+		echo "$('#message-list-place').append('".loader()."');";
+		   echo ajax_load("#message-space","'".AJAX_PART."_messages.php?tradesman='+id",null,$s_m_end);
 			 ?>
-		   
-          } 
-           catch(exception){ 
-               alert(exception); 
-           }   
-    } 
-                <?php
-
-                        //profile edit part
-                        //when the edit profile is clicked
-
-                ?>
-            </script>
+    }
+	  </script>
 		</head>
 		<body>
 		<div class="container whole-body">

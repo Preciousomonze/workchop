@@ -25,45 +25,33 @@ $curl = new Curl();
 
             <script type="text/javascript">
                 <?php ////LET'S DO THE JS STUFF HERE ?>
-                <?php /*
-                var _basic_part= $(".basic-show");
-                var _advanced_part= $(".advanced-show");
-                var _basic_click = $("a[href='#basic']");
-                var _advanced_click = $("a[href='#advanced']");
-                    */?>
-                  var request; 
-           
           $(document).on("submit","#search-vendor",function(event){ 
             event.preventDefault();
-			//$("#search-vendor").serialize();
-            searchVendor();
+			searchVendor();
           }); 
-           
-           
            function searchVendor(){ 
-            
-           try{ 
-		   <?php
-		  // $loading = ajax_load("#search-result");
-		  
+          <?php
 		   $toast_note_js = toast_note_js(".toast-note");
 		   $starting_ajax = "
-			/*$('#search-result').html('".loader()."');*/";
+			$('.activity-stream').append('".loader()."');";
+			$end_ajax = "$('.activity-stream div').remove('.blanket');";
+			
 		   $success = "$('#search-result').html(response);";
 		 // $load_inside = ajax_load("#search-result","response",$start_ajax,$toast_note_js);
-			
 		  $the_data = "location:$(\"#location\").val(),tradesman_type:$(\"#tradesman_type\").val()";
-                   echo ajax_send("#search-result","'".AJAX_PART."_search_result.php'","post",$the_data,$success,"html",$starting_ajax);
+                   echo ajax_send("#search-result","'".AJAX_PART."_search_result.php'","post",$the_data,$success,"html",$starting_ajax,$end_ajax);
 		?>
-          //     request.open('POST',"<?php echo AJAX_PART; ?>_search_result.php",true); 
-           } 
-           catch(exception){ 
-               alert(exception); 
-           } 
-            
        }
-
-            </script>
+	   	$(document).on("click","#select-location",function(){
+			$("form .location-pack").fadeToggle("slow");
+		});
+		function putLocation(id,name){
+			$("form #location").val(id);
+				$("form .location-pack").fadeOut("slow");
+				$("form #select-location").removeClass("left-out");
+			$("#select-location").empty().html("<p>"+name+" <i class=\"icon fa-caret-down\"></i></p>");
+		}
+   </script>
 		</head>
 		<body>
 		<div class="container whole-body">
@@ -84,40 +72,105 @@ $curl = new Curl();
          
 						
 						<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-12">
 						<div class="col-sm-6">
-						
+						<div class="inner">
+						<div class="form-top">
 						  <span class="icon-on-input"><i class="icon fa-users"></i></span>
+						  <span class="label">Type</span>
+						  </div>
 						<select class="form-control" id="tradesman_type" name="tradesman_type">
 						<option value="">Select a tradesman type</option>
 							<?php 
-							foreach($tradesman_args as $name => $id){
+							foreach($tradesman_args as $name => $values){
 								?>
-								<option value="<?php echo $id; ?>"><?php echo $name; ?></option>
+								<option value="<?php echo $values[0]; ?>"><?php echo $name; ?></option>
 								<?php
 							}
 							?>
 						</select>
+						</div>
 						</div><?php //column
 						?>
 						  <div class="col-sm-6">
-						  <span class="icon-on-input"><i class="icon fa-location"></i></span>
-							<select class="form-control left-out" id="location" name="location">
-						<option value="">Select a location</option>
-							<?php 
-							foreach($location_args as $name => $id){
+						  <div class="inner">
+						  <div class="form-top">
+						  <span class="icon-on-input"><i class="icon fa-map-marker"></i> </span>
+						    <span class="label">Location</span>
+						  </div>
+							<div id="select-location" class="like-combo clickable">
+								<p>Select a location <i class="icon fa-caret-down"></i></p>
+							</div>
+							<div class="location-pack">
+							<div class="body">
+							<?php //<div class="pack-head">Select a location</div>
+								$counting = 0;
+							foreach($location_args as $name => $values){
+								if($values[0] != 0){//for the sake of the no location i added, so it doesn't show.
+								$col_size = '';
+								$colour = '';
+								$div_row_start = '';
+								$div_row_end = '';
+								//using switch :(,i dont like it, maybe because because of nepa.
+									switch($values[0]){
+										case 1:
+										$div_row_start = "<div class=\"row\">";
+										$col_size = "col-xs-7";
+										break;
+										case 2:
+										$div_row_end = "</div>";
+										$col_size = "col-xs-5";
+										$colour = "halt";
+										break;
+										case 3:
+										$div_row_start = "<div class=\"row\">";
+										$col_size = "col-xs-6";
+										break;
+										case 4:
+										$div_row_end = "</div>";
+										$col_size = "col-xs-6";
+										$colour = "halt";
+										break;
+										case 5:
+										$div_row_start = "<div class=\"row\">";
+										$col_size = "col-xs-4";
+										break;
+										case 6:
+										$col_size = "col-xs-4";
+										$colour = "halt";
+										break;
+										case 7:
+										$div_row_end = "</div>";
+										$col_size = "col-xs-4";
+										break;
+										default:
+										$div_row_end = "";
+										$col_size = "";
+										
+									}
+									echo $div_row_start;
 								?>
-								<option value="<?php echo $id; ?>"><?php echo $name; ?></option>
+								<div class="col <?php echo $col_size." ".$colour; ?> clickable" onclick="putLocation(<?php echo $values[0]; ?>,'<?php echo $values[1]; ?>')">
+								
+								<p><?php echo $name; ?></p>
+								</div>
 								<?php
+								echo $div_row_end;
+							}
 							}
 							?>
-						</select>
+							</div>
+							<div class="foot"><p><p class="center" style="font-weight:700;">Can't find your location?</p>
+							Locations are divided into sectors. Select the one closest to you.</p></div>
+							</div>
+							<input type="hidden" value="0" class="form-control" id="location" name="location">
+						</div>
 						</div><?php //column
 						?>
 						</div> <?php //column
 						?>
-						<div class="col-xs-3">
-						<button type="submit" id="search-btn" class="btn btn-feel" name="search"><i class="icon fa-search"></i></button>
+						<div class="col-xs-3 center">
+						<button type="submit" id="search-btn" class="btn btn-feel" name="search"><i class="icon fa-search"></i> <span>Search</span></button>
 						</div><?php //column
 						?>
 						</div> <?php //row 
@@ -129,7 +182,7 @@ $curl = new Curl();
 					<div id="search-result" class="body">
 						<div class="big-search">
 							<i class="icon fa-search"></i>
-							<p class="inscribed">Search for a trandesman</p>
+							<p class="inscribed">Search for a tradesman</p>
 						</div>
 					</div>
 					<div class="footer">

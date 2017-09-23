@@ -1,0 +1,15 @@
+#FOR THE BLOG email
+email:
+worckchop_blog@workchop.ng
+pass:blogging.site.work.@$
+###########################
+##admin login
+http://blog.workchop.ng/wp-admin
+
+username: workchopper
+pass: blogger.of.work
+8WJa1vrwPpGW1U
+
+#############################
+no-reply@workchop.ng
+pass: dont.reply.$%w
